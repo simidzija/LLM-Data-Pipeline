@@ -14,6 +14,8 @@ def load_config(config_path):
 if __name__ == "__main__":
     config = load_config(str(ROOT/'config/settings.yaml'))
     urls = config['crawl_seeds']
-    crawler = crawl.Crawler(urls)
-    crawler.download_content(urls[0])
+    jsonl_path = str(ROOT/'data/crawled_data_wiki.jsonl')
+    
+    crawler = crawl.Crawler(urls, jsonl_path)
+    crawler.crawl(max_pages=10)
 
