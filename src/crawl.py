@@ -2,6 +2,7 @@ import requests
 import json
 import logging
 import time
+import random
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from collections import deque
@@ -47,7 +48,11 @@ class RequestHandler:
             self.tokens -= 1
         else:
             wait_time = (1 - self.tokens) / self.refill_rate
+            
+            # add random jitter
+            wait_time = max(0, wait_time + random.uniform(-0.3, 0.3))
             time.sleep(wait_time)
+
             # token gets added but then immediately used (reset to 0)
             self.last_add = time.monotonic()
             self.tokens = 0
