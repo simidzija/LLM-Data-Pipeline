@@ -8,7 +8,11 @@ import parse
 
 
 if __name__ == "__main__":
-    data_sample_filepath = str(ROOT/'data/crawl_data_sample.txt')
-    
-    
+    text_sample_filepath = str(ROOT/'data/crawl_text_sample.html')
+    with open(text_sample_filepath, 'r') as file:
+        html = file.read()
+
+    parser = parse.Parser()
+
+
 
