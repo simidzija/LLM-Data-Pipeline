@@ -8,6 +8,9 @@ from pathlib import Path
 from collections import deque
 from bs4 import BeautifulSoup
 
+# TODO: don't crawl "List of..." pages
+# TODO: only crawl links to pages, not to sections of a page
+
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -167,9 +170,4 @@ class Crawler:
                 file.write(url)
                 file.write('\n')
     
-
-
-
-
-# TODO: Refactor into Crawler base class and WikiCrawler, etc. subclasses
 
