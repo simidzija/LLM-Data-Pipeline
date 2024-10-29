@@ -8,9 +8,6 @@ from pathlib import Path
 from collections import deque
 from bs4 import BeautifulSoup
 
-# TODO: don't crawl "List of..." pages
-# TODO: only crawl links to pages, not to sections of a page
-
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -93,7 +90,11 @@ class WikiURLExtractor():
 
         for tag in soup.find_all('a', href=True):
             href = tag['href']
-            if href.startswith('/wiki/') and ':' not in href:
+            redirect = 'mw-redirect' in tag.get("class", [])
+            if (href.startswith('/wiki/')
+                and not href.startswith('/wiki/List_of') 
+                and ':' not in href 
+                and not redirect):
                 url = 'https://en.wikipedia.org' + href
                 if url not in self.extracted:
                     self.extracted.add(url)
