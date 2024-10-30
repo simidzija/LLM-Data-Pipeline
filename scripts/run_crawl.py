@@ -9,7 +9,7 @@ import utils
 
 
 if __name__ == "__main__":
-    data_filepath = str(ROOT/'data/crawl_data_2.jsonl')
+    data_filepath = str(ROOT/'data/crawl_data_5.jsonl')
     queue_filepath = str(ROOT/'data/crawl_queue.txt')
     visited_filepath = str(ROOT/'data/crawl_visited.txt')
     

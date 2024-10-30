@@ -3,10 +3,9 @@ from bs4 import BeautifulSoup
 from bs4.element import Tag
 
 # TODO: Add logger
-# TODO: remove refs, clarification needed, etc.
 
-with open('/Users/petar/Dropbox/llmdata/data/crawl_data.jsonl', 'r') as file:
-    for _ in range(110):
+with open('/Users/petar/Dropbox/llmdata/data/crawl_data_5.jsonl', 'r') as file:
+    for _ in range(15):
         line = json.loads(next(iter(file)))
     url = line['url']
     html = line['text']
@@ -14,17 +13,34 @@ with open('/Users/petar/Dropbox/llmdata/data/crawl_data.jsonl', 'r') as file:
 
 class Parser:
     def __init__(self):
-        self.allowed_tags = ['div', 'p', 'ol', 'ul', 'blockquote']
-        self.unwanted_tags = ['style']
-        self.end_ids = set(["See_also", 
+        # Tags
+        self.allowed_tags = ['div', 'p', 'ol', 'ul', 'blockquote', 'dl']
+        self.end_ids = set(["See_also",
+                            "Notes", 
                             "References", 
                             "Further_reading",
                             "External_links"]) 
         self.boundary_classes = set(["mw-heading2", 
                                      "mw-heading3"])
 
+    def parse_jsonl(self, raw_path, parsed_path):
+        with open(raw_path, 'r') as raw, open(parsed_path, 'w') as parsed:
+            for line in raw:
+                # read from file
+                entry = json.loads(line)
+                url = entry['url']
+                html = entry['text']
 
-    def parse(self, html: str):
+                # parse
+                text_list = self.parse(html)
+
+                # write to file
+                entry = {'url': url, 'text_list': text_list}
+                json.dump(entry, parsed)
+                parsed.write('\n')
+
+
+    def parse(self, html: str) -> list[str]:
         # use html5lib parser because it matches chrome better than html.parser
         soup = BeautifulSoup(html, 'html5lib')
         main_tag = (soup
@@ -49,17 +65,32 @@ class Parser:
         if text:
             text_list.append(text)
 
-        for n, sec in enumerate(text_list):
-            print(f'--------------- Section {n}: ---------------')
-            print(sec)
+        # for n, sec in enumerate(text_list):
+        #     print(f'--------------- Section {n}: ---------------')
+        #     print(sec)
 
         return text_list       
 
 
     def get_text(self, tag: Tag):
         def get_text_helper(tag: Tag, newline=True):
+            def unwanted_tags(tag: Tag):
+                name = tag.name
+                class_ = set(tag.get('class', []))
+
+                if name == 'style':
+                    return True
+                elif name == 'sup':
+                    if class_ == {'noprint','Inline-Template','Template-Fact'}:
+                        # [citation needed]
+                        return True
+                    elif class_ == {'reference'}:
+                        return True
+                else:
+                    return False
+
             # get text from tag, without unwanted elements
-            for unwanted in tag.find_all(self.unwanted_tags):
+            for unwanted in tag.find_all(unwanted_tags):
                 unwanted.extract()
             text = tag.text.strip()
             if newline:
@@ -89,7 +120,7 @@ class Parser:
             text = f'\n"{get_text_helper(tag, newline=False)}"\n\n'
             return text
 
-        if tag.name == 'p':
+        if tag.name == 'p' or tag.name == 'dl':
             text = get_text_from_p(tag)
         elif tag.name == 'ol':
             text = get_text_from_ol(tag)

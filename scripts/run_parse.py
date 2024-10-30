@@ -8,11 +8,12 @@ import parse
 
 
 if __name__ == "__main__":
-    text_sample_filepath = str(ROOT/'data/crawl_text_sample.html')
-    with open(text_sample_filepath, 'r') as file:
-        html = file.read()
+    raw_path = str(ROOT/'data/crawl_data_5.jsonl')
+    parsed_path = str(ROOT/'data/parse_data_5.jsonl')
 
     parser = parse.Parser()
+    parser.parse_jsonl(raw_path, parsed_path)
+
 
 
 
