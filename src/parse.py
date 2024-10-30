@@ -2,9 +2,11 @@ import json
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
+# TODO: Add logger
+# TODO: remove refs, clarification needed, etc.
 
 with open('/Users/petar/Dropbox/llmdata/data/crawl_data.jsonl', 'r') as file:
-    for _ in range(4):
+    for _ in range(110):
         line = json.loads(next(iter(file)))
     url = line['url']
     html = line['text']
@@ -13,14 +15,13 @@ with open('/Users/petar/Dropbox/llmdata/data/crawl_data.jsonl', 'r') as file:
 class Parser:
     def __init__(self):
         self.allowed_tags = ['div', 'p', 'ol', 'ul', 'blockquote']
-        self.unwanted_tags = ['sup']
+        self.unwanted_tags = ['style']
         self.end_ids = set(["See_also", 
                             "References", 
                             "Further_reading",
                             "External_links"]) 
         self.boundary_classes = set(["mw-heading2", 
                                      "mw-heading3"])
-    # TODO: Add logger
 
 
     def parse(self, html: str):
@@ -49,7 +50,7 @@ class Parser:
             text_list.append(text)
 
         for n, sec in enumerate(text_list):
-            print(f'--------------- Section {n} ---------------')
+            print(f'--------------- Section {n}: ---------------')
             print(sec)
 
         return text_list       
@@ -64,27 +65,42 @@ class Parser:
             if newline:
                 text += '\n'
             return text
-
-        if tag.name == 'p':
+        
+        def get_text_from_p(tag):
             text = get_text_helper(tag)
-        elif tag.name == 'ol':
+            return text
+        
+        def get_text_from_ol(tag):
             text = ""
             for i, item in enumerate(tag.find_all('li', recursive=False), 1):
                 text += f"  {i}. {get_text_helper(item)}"
-        elif tag.name == 'ul':
+            return text
+
+        def get_text_from_ul(tag):
             text = ""
             for item in tag.find_all('li', recursive=False):
                 text += f"  • {get_text_helper(item)}"
+            return text
+        
+        def get_text_from_blockquote(tag):
+            # if "templatequote" in tag.get("class", []):
+            #     text = f'\n{get_text_helper(tag)}'
+            # else:
+            text = f'\n"{get_text_helper(tag, newline=False)}"\n\n'
+            return text
+
+        if tag.name == 'p':
+            text = get_text_from_p(tag)
+        elif tag.name == 'ol':
+            text = get_text_from_ol(tag)
+        elif tag.name == 'ul':
+            text = get_text_from_ul(tag)
         elif tag.name == 'blockquote':
-            if "templatequote" in tag.get("class", []):
-                text = f'\n{get_text_helper(tag)}'
-            else:
-                text = f'\n"{get_text_helper(tag, newline=False)}"\n'
+            text = get_text_from_blockquote(tag)
         else:
             text = ""
         
         return text
-        # TODO: other tags: 
         # TODO: deal with equations
 
     def is_end(self, tag: Tag):

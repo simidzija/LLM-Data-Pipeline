@@ -92,7 +92,8 @@ class WikiURLExtractor():
             href = tag['href']
             redirect = 'mw-redirect' in tag.get("class", [])
             if (href.startswith('/wiki/')
-                and not href.startswith('/wiki/List_of') 
+                and not href.startswith('/wiki/List_of')
+                and not href.startswith('/wiki/Main_Page') 
                 and ':' not in href 
                 and not redirect):
                 url = 'https://en.wikipedia.org' + href
@@ -103,10 +104,11 @@ class WikiURLExtractor():
 
 
 class Crawler:
-    def __init__(self, data_filepath: str, queue_filepath: str, reset=False, seeds=None):
+    def __init__(self, data_filepath: str, queue_filepath: str, visited_filepath: str, reset=False, seeds=None):
         super().__init__()
         self.data_filepath = data_filepath
         self.queue_filepath = queue_filepath
+        self.visited_filepath = visited_filepath
 
         self.logger = Logger('crawl')
         self.request_handler = RequestHandler()
@@ -119,19 +121,30 @@ class Crawler:
                 pass
             with open(self.queue_filepath, 'w'):
                 pass
+            with open(self.visited_filepath, 'w'):
+                pass
             with open(self.logger.filename, 'w'):
                 pass
 
-            # define url queue and visited set
+            # initialize queue (yet to visit)
             self.queue = deque(seeds)
+            # initialize visited (already visited)
+            self.visited = set([])
+            # initialize extracted (queue + visited)
             self.extracted = set(self.queue)
 
         elif reset is False:
+            # initialize queue
             with open(self.queue_filepath, 'r') as file:
                 self.queue = deque([line.strip() for line in file])
-            with open(self.data_filepath, 'r') as file:
-                self.extracted = set([json.loads(line)['url'] for line in file])
-                self.extracted.update(set(self.queue))
+            # initialize visited
+            with open(self.visited_filepath, 'r') as file:
+                self.visited = set([line.strip() for line in file])
+            # initialize extracted
+            self.extracted = set(self.queue).union(self.visited)
+            # with open(self.data_filepath, 'r') as file:
+                # self.extracted = set([json.loads(line)['url'] for line in file])
+                # self.extracted.update(set(self.queue))
 
         self.url_extracter = WikiURLExtractor(self.queue, self.extracted)
     
@@ -142,6 +155,10 @@ class Crawler:
             entry = {'url': url, 'text': text}
             json.dump(entry, file)
             file.write('\n')
+
+        # add to visited
+        with open(self.visited_filepath, 'a') as file:
+            file.write(url + '\n')
             
         # extract urls
         self.url_extracter.extract(text)
@@ -160,6 +177,9 @@ class Crawler:
             if status == 200:
                 self.scrape(url, response)
                 page_count += 1
+            elif status == 429:
+                self.logger.info(f"STOPPING CRAWLING - Status: {status}")
+                break
 
             print(f'page_count = {page_count}')
 
@@ -171,4 +191,3 @@ class Crawler:
                 file.write(url)
                 file.write('\n')
     
-
