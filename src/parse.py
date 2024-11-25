@@ -79,93 +79,92 @@ class Parser:
         return text_list       
 
 
-
     def get_text(self, tag: Tag) -> str:
         """Returns string of text in tag."""
-        def get_text_helper(tag: Tag, newline=True):
-            def is_unwanted(node: Tag):
-                """Determines if node is unwanted"""
-                name = node.name
-                class_ = set(node.get('class', []))
-
-                if name in self.unwanted_tags:
-                    return True
-                elif name == 'sup':
-                    if class_ == {'noprint','Inline-Template','Template-Fact'}:
-                        # this corresponds to [citation needed] tags
-                        return True
-                    elif class_ == {'reference'}:
-                        return True
-                
-                return False
-
-            text = ''
-            for node in tag.descendants:
-                if isinstance(node, str) and not is_unwanted(node.parent):
-                    text += node 
-                    
-
-            # for subtext in tag.find_all(text=True):
-            #     if is_unwanted(subtext.parent):
-            #         continue
-            #     elif subtext.parent.name == 'annotation':
-            #         text += 'ANNOTATION:'
-            #     elif subtext.parent.name == 'math':
-            #         text += 'MATH'
-            #     text += subtext
-            # # Remove unwanted subtags
-            # for unwanted in tag.find_all(is_unwanted):
-            #     unwanted.decompose()
-
-            # text = tag.text.strip()
-
-            text = text.strip()
-            if newline:
-                text += '\n'
-            return text
-        
-        def get_text_from_p(tag):
-            text = get_text_helper(tag)
-            return text
-
-        def get_text_from_dl(tag):
-            text = get_text_helper(tag)
-            return text
-        
-        def get_text_from_ol(tag):
-            text = ""
-            for i, item in enumerate(tag.find_all('li', recursive=False), 1):
-                text += f"  {i}. {get_text_helper(item)}"
-            return text
-
-        def get_text_from_ul(tag):
-            text = ""
-            for item in tag.find_all('li', recursive=False):
-                text += f"  • {get_text_helper(item)}"
-            return text
-        
-        def get_text_from_blockquote(tag):
-            # if "templatequote" in tag.get("class", []):
-            #     text = f'\n{get_text_helper(tag)}'
-            # else:
-            text = f'\n"{get_text_helper(tag, newline=False)}"\n\n'
-            return text
 
         if tag.name == 'p':
-            text = get_text_from_p(tag)
+            text = self.get_text_from_p(tag)
         elif tag.name == 'dl':
-            text = get_text_from_dl(tag)
+            text = self.get_text_from_dl(tag)
         elif tag.name == 'ol':
-            text = get_text_from_ol(tag)
+            text = self.get_text_from_ol(tag)
         elif tag.name == 'ul':
-            text = get_text_from_ul(tag)
+            text = self.get_text_from_ul(tag)
         elif tag.name == 'blockquote':
-            text = get_text_from_blockquote(tag)
+            text = self.get_text_from_blockquote(tag)
         else:
             text = ""
         
         return text
         # TODO: deal with equations
+
+    def get_text_helper(self, tag: Tag, newline=True):
+        def is_unwanted(node: Tag):
+            """Determines if node is unwanted"""
+            name = node.name
+            class_ = set(node.get('class', []))
+
+            if name in self.unwanted_tags:
+                return True
+            elif name == 'sup':
+                if class_ == {'noprint','Inline-Template','Template-Fact'}:
+                    # this corresponds to [citation needed] tags
+                    return True
+                elif class_ == {'reference'}:
+                    return True
+            
+            return False
+
+        text = ''
+        for node in tag.descendants:
+            if isinstance(node, str) and not is_unwanted(node.parent):
+                text += node 
+                
+        # for subtext in tag.find_all(text=True):
+        #     if is_unwanted(subtext.parent):
+        #         continue
+        #     elif subtext.parent.name == 'annotation':
+        #         text += 'ANNOTATION:'
+        #     elif subtext.parent.name == 'math':
+        #         text += 'MATH'
+        #     text += subtext
+        # # Remove unwanted subtags
+        # for unwanted in tag.find_all(is_unwanted):
+        #     unwanted.decompose()
+
+        # text = tag.text.strip()
+
+        text = text.strip()
+        if newline:
+            text += '\n'
+        return text
+
+    def get_text_from_p(self, tag):
+        text = self.get_text_helper(tag)
+        return text
+
+    def get_text_from_dl(self, tag):
+        text = self.get_text_helper(tag)
+        return text
+    
+    def get_text_from_ol(self, tag):
+        text = ""
+        for i, item in enumerate(tag.find_all('li', recursive=False), 1):
+            text += f"  {i}. {self.get_text_helper(item)}"
+        return text
+
+    def get_text_from_ul(self, tag):
+        text = ""
+        for item in tag.find_all('li', recursive=False):
+            text += f"  • {self.get_text_helper(item)}"
+        return text
+    
+    def get_text_from_blockquote(self, tag):
+        # if "templatequote" in tag.get("class", []):
+        #     text = f'\n{get_text_helper(tag)}'
+        # else:
+        text = f'\n"{self.get_text_helper(tag, newline=False)}"\n\n'
+        return text
 
     def is_end(self, tag: Tag):
         if tag.name != "div":
@@ -186,7 +185,5 @@ class Parser:
             return self.boundary_classes.intersection(classes)
 
         
-
-
 
 
