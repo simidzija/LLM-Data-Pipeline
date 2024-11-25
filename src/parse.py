@@ -9,12 +9,6 @@ sys.path.append(str(ROOT/'src'))
 
 from utils import Logger
 
-with open('/Users/petar/Documents/llmdata/data/crawl_data_5.jsonl', 'r') as file:
-    for _ in range(11):
-        line = json.loads(next(iter(file)))
-    url = line['url']
-    html = line['text']
-
 
 class Parser:
     def __init__(self):
@@ -193,7 +187,6 @@ class Parser:
 
         
 
-parser = Parser()
-parser.parse(html)
+
 
 
