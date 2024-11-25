@@ -2,7 +2,7 @@ import sys
 import json
 from pathlib import Path
 from bs4 import BeautifulSoup
-from bs4.element import Tag
+from bs4.element import Tag, NavigableString
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -95,45 +95,35 @@ class Parser:
         # TODO: deal with equations
 
     def get_text_helper(self, tag: Tag, newline=True):
-        def is_unwanted(node: Tag):
-            """Determines if node is unwanted"""
-            name = node.name
-            class_ = set(node.get('class', []))
-
-            if name in self.unwanted_tags:
-                return True
-            elif name == 'sup':
-                if class_ == {'noprint','Inline-Template','Template-Fact'}:
-                    # this corresponds to [citation needed] tags
-                    return True
-                elif class_ == {'reference'}:
-                    return True
-            
-            return False
-
-        text = ''
+        text = ""
         for node in tag.descendants:
-            if isinstance(node, str) and not is_unwanted(node.parent):
-                text += node 
-                
-        # for subtext in tag.find_all(text=True):
-        #     if is_unwanted(subtext.parent):
-        #         continue
-        #     elif subtext.parent.name == 'annotation':
-        #         text += 'ANNOTATION:'
-        #     elif subtext.parent.name == 'math':
-        #         text += 'MATH'
-        #     text += subtext
-        # # Remove unwanted subtags
-        # for unwanted in tag.find_all(is_unwanted):
-        #     unwanted.decompose()
-
-        # text = tag.text.strip()
+            if self.keep_text_node(node):
+                text += str(node)
 
         text = text.strip()
         if newline:
             text += '\n'
         return text
+
+    def keep_text_node(self, node: Tag):
+        """Return True if node is a text node and if we should keep it"""
+        if not isinstance(node, NavigableString):
+            return False
+        
+        parent = node.parent
+        name = parent.name
+        class_ = set(parent.get('class', []))
+
+        if name in self.unwanted_tags:
+            return False
+        elif name == 'sup':
+            if class_ == {'noprint','Inline-Template','Template-Fact'}:
+                # this corresponds to [citation needed] tags
+                return False
+            elif class_ == {'reference'}:
+                return False
+
+        return True 
 
     def get_text_from_p(self, tag):
         text = self.get_text_helper(tag)
