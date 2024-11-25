@@ -1,107 +1,16 @@
+import sys
 import requests
 import json
-import logging
 import time
 import random
-from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from collections import deque
 from bs4 import BeautifulSoup
 
-
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.append(str(ROOT/'src'))
 
-class Logger:
-    def __init__(self, name: str):
-        self.filename = str(ROOT/f'log/{name}.log')
-        self.logger = logging.getLogger(name)
-        self.logger.setLevel(logging.INFO) 
-
-        self.handler = RotatingFileHandler(self.filename, maxBytes=10*2**20, backupCount=5)
-        
-        self.formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-        
-        self.handler.setFormatter(self.formatter)
-
-        self.logger.addHandler(self.handler)
-
-    def info(self, msg: str, *args, **kwargs):
-        self.logger.info(msg, *args, **kwargs)
-
-
-
-class RequestHandler:
-    def __init__(self, refill_rate: float=1.0, bucket_limit: float=10.0):
-        self.refill_rate = refill_rate # tokens / second
-        self.bucket_limit = bucket_limit
-        self.tokens = 0
-        self.last_add = time.monotonic()
-
-    def wait(self):
-        # add tokens to bucket
-        new_tokens = self.refill_rate * (time.monotonic() - self.last_add)
-        self.tokens = min(self.bucket_limit, self.tokens + new_tokens)
-        self.last_add = time.monotonic()
-
-        # wait if necessary
-        if self.tokens > 1:
-            self.tokens -= 1
-        else:
-            wait_time = (1 - self.tokens) / self.refill_rate
-            
-            # add random jitter
-            wait_time = max(0, wait_time + random.uniform(-0.3, 0.3))
-            time.sleep(wait_time)
-
-            # token gets added but then immediately used (reset to 0)
-            self.last_add = time.monotonic()
-            self.tokens = 0
-
-    def request(self, url: str):
-        self.wait()
-        response = requests.get(url, headers={'User-Agent': 'WikiCrawler/1.0 (Educational personal project; https://github.com/simidzija)'})
-        status = response.status_code
-        if status == 200:
-            # OK
-            pass
-        elif status == 400:
-            # Bad Request
-            pass
-        elif status == 404:
-            # Not Found
-            pass
-        elif status == 429:
-            pass
-            # Too Many Requests
-            # TODO: Implement extra wait logic
-        else:
-            pass
-
-        return response
-
-
-class WikiURLExtractor():
-    def __init__(self, queue: deque[str], extracted: set[str]):
-        self.queue = queue
-        self.extracted = extracted
-
-    def extract(self, html: str) -> list[str]:
-        soup = BeautifulSoup(html, 'html.parser')
-
-        for tag in soup.find_all('a', href=True):
-            href = tag['href']
-            redirect = 'mw-redirect' in tag.get("class", [])
-            if (href.startswith('/wiki/')
-                and not href.startswith('/wiki/List_of')
-                and not href.startswith('/wiki/Main_Page') 
-                and ':' not in href 
-                and not redirect):
-                url = 'https://en.wikipedia.org' + href
-                if url not in self.extracted:
-                    self.extracted.add(url)
-                    self.queue.append(url)
-        
-
+from utils import Logger
 
 class Crawler:
     def __init__(self, data_filepath: str, queue_filepath: str, visited_filepath: str, reset=False, seeds=None):
@@ -191,3 +100,75 @@ class Crawler:
                 file.write(url)
                 file.write('\n')
     
+class RequestHandler:
+    def __init__(self, refill_rate: float=1.0, bucket_limit: float=10.0):
+        self.refill_rate = refill_rate # tokens / second
+        self.bucket_limit = bucket_limit
+        self.tokens = 0
+        self.last_add = time.monotonic()
+
+    def wait(self):
+        # add tokens to bucket
+        new_tokens = self.refill_rate * (time.monotonic() - self.last_add)
+        self.tokens = min(self.bucket_limit, self.tokens + new_tokens)
+        self.last_add = time.monotonic()
+
+        # wait if necessary
+        if self.tokens > 1:
+            self.tokens -= 1
+        else:
+            wait_time = (1 - self.tokens) / self.refill_rate
+            
+            # add random jitter
+            wait_time = max(0, wait_time + random.uniform(-0.3, 0.3))
+            time.sleep(wait_time)
+
+            # token gets added but then immediately used (reset to 0)
+            self.last_add = time.monotonic()
+            self.tokens = 0
+
+    def request(self, url: str):
+        self.wait()
+        response = requests.get(url, headers={'User-Agent': 'WikiCrawler/1.0 (Educational personal project; https://github.com/simidzija)'})
+        status = response.status_code
+        if status == 200:
+            # OK
+            pass
+        elif status == 400:
+            # Bad Request
+            pass
+        elif status == 404:
+            # Not Found
+            pass
+        elif status == 429:
+            pass
+            # Too Many Requests
+            # TODO: Implement extra wait logic
+        else:
+            pass
+
+        return response
+
+
+class WikiURLExtractor():
+    def __init__(self, queue: deque[str], extracted: set[str]):
+        self.queue = queue
+        self.extracted = extracted
+
+    def extract(self, html: str) -> list[str]:
+        soup = BeautifulSoup(html, 'html.parser')
+
+        for tag in soup.find_all('a', href=True):
+            href = tag['href']
+            redirect = 'mw-redirect' in tag.get("class", [])
+            if (href.startswith('/wiki/')
+                and not href.startswith('/wiki/List_of')
+                and not href.startswith('/wiki/Main_Page') 
+                and ':' not in href 
+                and not redirect):
+                url = 'https://en.wikipedia.org' + href
+                if url not in self.extracted:
+                    self.extracted.add(url)
+                    self.queue.append(url)
+        
+

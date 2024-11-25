@@ -1,0 +1,132 @@
+2024-11-12 19:27:32,756 - INFO - Started parsing /Users/petar/Documents/llmdata/data/crawl_data_5.jsonl
+2024-11-12 19:27:32,760 - INFO - Parsing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-11-12 19:27:32,785 - INFO - Parsing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-11-12 19:27:32,800 - INFO - Parsing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-11-12 19:27:32,825 - INFO - Parsing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-11-12 19:27:32,839 - INFO - Parsing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-11-12 19:27:32,861 - INFO - Parsing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-11-12 19:27:32,876 - INFO - Parsing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-11-12 19:27:32,904 - INFO - Parsing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-11-12 19:27:32,930 - INFO - Parsing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-11-12 19:27:32,948 - INFO - Parsing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-11-12 19:27:32,967 - INFO - Parsing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-11-12 19:27:32,987 - INFO - Parsing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-11-12 19:27:33,004 - INFO - Parsing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-11-12 19:27:33,017 - INFO - Parsing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-11-12 19:27:33,047 - INFO - Parsing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-11-12 19:27:33,094 - INFO - Parsing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-11-12 19:27:33,122 - INFO - Parsing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-11-12 19:27:33,150 - INFO - Parsing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-11-12 19:27:33,186 - INFO - Parsing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-11-12 19:27:33,209 - INFO - Parsing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-11-12 19:27:33,229 - INFO - Parsing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-11-12 19:27:33,245 - INFO - Parsing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-11-12 19:27:33,256 - INFO - Parsing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-11-12 19:27:33,271 - INFO - Parsing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-11-12 19:27:33,294 - INFO - Parsing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-11-12 19:27:33,310 - INFO - Parsing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-11-12 19:27:33,331 - INFO - Parsing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-11-12 19:27:33,354 - INFO - Parsing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-11-12 19:27:33,374 - INFO - Parsing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-11-12 19:27:33,393 - INFO - Parsing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-11-12 19:27:33,435 - INFO - Parsing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-11-12 19:27:33,454 - INFO - Parsing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-11-12 19:27:33,472 - INFO - Parsing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-11-12 19:27:33,511 - INFO - Parsing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-11-12 19:27:33,530 - INFO - Parsing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-11-12 19:27:33,640 - INFO - Parsing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-11-12 19:27:33,800 - INFO - Parsing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-11-12 19:27:33,875 - INFO - Parsing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-11-12 19:27:33,899 - INFO - Parsing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-11-12 19:27:33,960 - INFO - Parsing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-11-12 19:27:34,004 - INFO - Finished parsing /Users/petar/Documents/llmdata/data/crawl_data_5.jsonl
+
+
+2024-11-14 18:58:40,518 - INFO - Started parsing /Users/petar/Documents/llmdata/data/crawl_data_5.jsonl
+2024-11-14 18:58:40,518 - INFO - Started parsing /Users/petar/Documents/llmdata/data/crawl_data_5.jsonl
+2024-11-14 18:58:40,522 - INFO - Parsing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-11-14 18:58:40,522 - INFO - Parsing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-11-14 18:58:40,549 - INFO - Parsing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-11-14 18:58:40,549 - INFO - Parsing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-11-14 18:58:40,588 - INFO - Parsing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-11-14 18:58:40,588 - INFO - Parsing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-11-14 18:58:40,615 - INFO - Parsing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-11-14 18:58:40,615 - INFO - Parsing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-11-14 18:58:40,630 - INFO - Parsing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-11-14 18:58:40,630 - INFO - Parsing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-11-14 18:58:40,657 - INFO - Parsing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-11-14 18:58:40,657 - INFO - Parsing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-11-14 18:58:40,673 - INFO - Parsing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-11-14 18:58:40,673 - INFO - Parsing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-11-14 18:58:40,697 - INFO - Parsing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-11-14 18:58:40,697 - INFO - Parsing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-11-14 18:58:40,723 - INFO - Parsing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-11-14 18:58:40,723 - INFO - Parsing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-11-14 18:58:40,742 - INFO - Parsing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-11-14 18:58:40,742 - INFO - Parsing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-11-14 18:58:40,761 - INFO - Parsing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-11-14 18:58:40,761 - INFO - Parsing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-11-14 18:58:40,782 - INFO - Parsing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-11-14 18:58:40,782 - INFO - Parsing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-11-14 18:58:40,799 - INFO - Parsing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-11-14 18:58:40,799 - INFO - Parsing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-11-14 18:58:40,812 - INFO - Parsing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-11-14 18:58:40,812 - INFO - Parsing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-11-14 18:58:40,843 - INFO - Parsing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-11-14 18:58:40,843 - INFO - Parsing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-11-14 18:58:40,906 - INFO - Parsing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-11-14 18:58:40,906 - INFO - Parsing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-11-14 18:58:40,945 - INFO - Parsing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-11-14 18:58:40,945 - INFO - Parsing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-11-14 18:58:40,963 - INFO - Parsing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-11-14 18:58:40,963 - INFO - Parsing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-11-14 18:58:40,999 - INFO - Parsing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-11-14 18:58:40,999 - INFO - Parsing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-11-14 18:58:41,022 - INFO - Parsing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-11-14 18:58:41,022 - INFO - Parsing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-11-14 18:58:41,043 - INFO - Parsing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-11-14 18:58:41,043 - INFO - Parsing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-11-14 18:58:41,059 - INFO - Parsing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-11-14 18:58:41,059 - INFO - Parsing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-11-14 18:58:41,071 - INFO - Parsing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-11-14 18:58:41,071 - INFO - Parsing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-11-14 18:58:41,085 - INFO - Parsing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-11-14 18:58:41,085 - INFO - Parsing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-11-14 18:58:41,110 - INFO - Parsing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-11-14 18:58:41,110 - INFO - Parsing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-11-14 18:58:41,126 - INFO - Parsing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-11-14 18:58:41,126 - INFO - Parsing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-11-14 18:58:41,147 - INFO - Parsing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-11-14 18:58:41,147 - INFO - Parsing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-11-14 18:58:41,169 - INFO - Parsing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-11-14 18:58:41,169 - INFO - Parsing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-11-14 18:58:41,190 - INFO - Parsing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-11-14 18:58:41,190 - INFO - Parsing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-11-14 18:58:41,221 - INFO - Parsing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-11-14 18:58:41,221 - INFO - Parsing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-11-14 18:58:41,253 - INFO - Parsing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-11-14 18:58:41,253 - INFO - Parsing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-11-14 18:58:41,272 - INFO - Parsing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-11-14 18:58:41,272 - INFO - Parsing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-11-14 18:58:41,291 - INFO - Parsing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-11-14 18:58:41,291 - INFO - Parsing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-11-14 18:58:41,330 - INFO - Parsing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-11-14 18:58:41,330 - INFO - Parsing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-11-14 18:58:41,349 - INFO - Parsing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-11-14 18:58:41,349 - INFO - Parsing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-11-14 18:58:41,462 - INFO - Parsing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-11-14 18:58:41,462 - INFO - Parsing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-11-14 18:58:41,623 - INFO - Parsing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-11-14 18:58:41,623 - INFO - Parsing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-11-14 18:58:41,698 - INFO - Parsing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-11-14 18:58:41,698 - INFO - Parsing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-11-14 18:58:41,723 - INFO - Parsing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-11-14 18:58:41,723 - INFO - Parsing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-11-14 18:58:41,784 - INFO - Parsing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-11-14 18:58:41,784 - INFO - Parsing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-11-14 18:58:41,827 - INFO - Finished parsing /Users/petar/Documents/llmdata/data/crawl_data_5.jsonl
+
+
+2024-11-14 18:58:41,827 - INFO - Finished parsing /Users/petar/Documents/llmdata/data/crawl_data_5.jsonl
+
+

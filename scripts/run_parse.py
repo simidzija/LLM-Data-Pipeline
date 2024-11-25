@@ -15,5 +15,3 @@ if __name__ == "__main__":
     parser.parse_jsonl(raw_path, parsed_path)
 
 
-
-
