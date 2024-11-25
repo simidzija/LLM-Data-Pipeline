@@ -17,6 +17,14 @@ class Parser:
         self.unwanted_tags = set(['script', 'style', 'mstyle'])
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
+        
+        self.TAG_HANDLERS = {
+            'p': self.get_text_from_p,
+            'dl': self.get_text_from_dl,
+            'ol': self.get_text_from_ol,
+            'ul': self.get_text_from_ul,
+            'blockquote': self.get_text_from_blockquote
+        }
 
         # Logger
         self.logger = Logger('parse')
@@ -81,19 +89,7 @@ class Parser:
 
     def get_text(self, tag: Tag) -> str:
         """Returns string of text in tag."""
-
-        if tag.name == 'p':
-            text = self.get_text_from_p(tag)
-        elif tag.name == 'dl':
-            text = self.get_text_from_dl(tag)
-        elif tag.name == 'ol':
-            text = self.get_text_from_ol(tag)
-        elif tag.name == 'ul':
-            text = self.get_text_from_ul(tag)
-        elif tag.name == 'blockquote':
-            text = self.get_text_from_blockquote(tag)
-        else:
-            text = ""
+        text = self.TAG_HANDLERS.get(tag.name, lambda x: "")(tag)
         
         return text
         # TODO: deal with equations
