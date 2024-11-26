@@ -35,6 +35,7 @@ class Parser:
         self.logger = Logger('parse')
 
     def parse_jsonl(self, raw_path, parsed_path):
+        """Parse html data stored in .jsonl file."""
         self.logger.info(f"Started parsing {raw_path}")
         with open(raw_path, 'r') as raw, open(parsed_path, 'w') as parsed:
             total_lines = sum(1 for _ in raw)
@@ -61,7 +62,7 @@ class Parser:
 
 
     def parse(self, html: str) -> list[str]:
-        # use html5lib parser because it matches chrome better than html.parser
+        """Parse wiki html and return list of text from each section."""
         soup = BeautifulSoup(html, 'html5lib')
         main_tag = (soup
             .find('div', id="mw-content-text")
@@ -78,7 +79,6 @@ class Parser:
                 if text:
                     text_list.append(text)
                 text = ""
-                continue
             else:
                 text += self.get_text(tag)
         
@@ -93,13 +93,13 @@ class Parser:
 
 
     def get_text(self, tag: Tag) -> str:
-        """Returns string of text in tag."""
+        """Parses tag by calling appropriate tag handler."""
         text = self.TAG_HANDLERS.get(tag.name, lambda x: "")(tag)
         
         return text
-        # TODO: deal with equations
 
     def get_text_helper(self, tag: Tag, newline=True):
+        """Parses tag by iterating over descendent nodes and calling appropriate format handler. Used by tag handlers."""
         text = ""
         for node in tag.descendants:
             if isinstance(node, NavigableString):
