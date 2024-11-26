@@ -132,7 +132,7 @@ class Parser:
 
     ####################     FORMAT HANDLERS     #####################
 
-    def format_handler_math(node: NavigableString):
+    def format_handler_math(self, node: NavigableString):
         # TODO: implement
         pass
 
