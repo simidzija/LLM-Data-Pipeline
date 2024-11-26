@@ -18,14 +18,6 @@ class Parser:
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
         
         # Handlers 
-        self.TAG_HANDLERS = {
-            'p': self.tag_handler_simple,
-            'dl': self.tag_handler_simple,
-            'ol': lambda tag: self.tag_handler_list(tag, numbered=True),
-            'ul': lambda tag: self.tag_handler_list(tag, numbered=False),
-            'blockquote': self.tag_handler_blockquote
-        }
-
         self.FILTER_HANDLERS = {
             'script': self.filter_handler_unwanted,
             'style': self.filter_handler_unwanted,
@@ -34,6 +26,8 @@ class Parser:
         }
 
         self.FORMAT_HANDLERS = {
+            'li': self.format_handler_list_item,
+            'blockquote': self.format_handler_blockquote,
             'math': self.format_handler_math
         }
 
@@ -97,32 +91,30 @@ class Parser:
 
         return text_list       
 
-
-    def get_text(self, tag: Tag) -> str:
-        """Parses tag by calling appropriate tag handler."""
-        text = self.TAG_HANDLERS.get(tag.name, lambda x: "")(tag)
-        
-        return text
-
     ####################     Helper Functions     #####################
 
-    def get_text_helper(self, tag: Tag, newline=True):
-        """Parses tag by iterating over descendent nodes and calling appropriate format handler. Used by tag handlers."""
+    def get_text(self, tag: Tag, newline=True):
+        """Parses tag by iterating over descendent nodes. Used by tag handlers."""
         text = ""
         for node in tag.descendants:
             if isinstance(node, NavigableString):
-                if self.keep_node(node):
-                    text += self.FORMAT_HANDLERS.get(node.parent.name, lambda x: str(x))(node)
+                if self.filter_node(node):
+                    text += self.format_node(node)
 
         text = text.strip()
         if newline:
             text += '\n'
         return text
 
-    def keep_node(self, node: NavigableString):
-        """Return True if we should keep NavigableString node."""
+    def filter_node(self, node: NavigableString):
+        """Filters NavigableString node by calling appropriate filter handler."""
         parent = node.parent
-        return self.FILTER_HANDLERS.get(parent.name, lambda x: True)(parent)
+        return self.FILTER_HANDLERS.get(parent.name, lambda x: True)(node)
+
+    def format_node(self, node: NavigableString):
+        """Formats NavigableString node by calling appropriate format handler."""
+        parent = node.parent
+        return self.FORMAT_HANDLERS.get(parent.name, lambda x: str(x))(node)
 
     def is_end(self, tag: Tag):
         if tag.name != "div":
@@ -142,33 +134,14 @@ class Parser:
             classes = set(tag.get("class", []))
             return self.boundary_classes.intersection(classes)
 
-
-    ####################     TAG HANDLERS     #####################
-
-    def tag_handler_simple(self, tag):
-        text = self.get_text_helper(tag)
-        return text
-
-    def tag_handler_list(self, tag, numbered=False):
-        text = ""
-        for i, item in enumerate(tag.find_all('li', recursive=False), 1):
-            bullet = f"{i}." if numbered else "•"
-            text += f"  {bullet} {self.get_text_helper(item)}"
-        return text
-    
-    def tag_handler_blockquote(self, tag):
-        text = f'\n"{self.get_text_helper(tag, newline=False)}"\n\n'
-        return text
-
-
         
     ####################     FILTER HANDLERS     #####################
 
-    def filter_handler_unwanted(self, tag: Tag):
+    def filter_handler_unwanted(self, node: NavigableString):
         return False
     
-    def filter_handler_sup(self, tag: Tag):
-        class_ = set(tag.get('class', []))
+    def filter_handler_sup(self, node: NavigableString):
+        class_ = set(node.parent.get('class', []))
 
         if class_ == {'noprint','Inline-Template','Template-Fact'}:
             # this corresponds to [citation needed] tags
@@ -180,6 +153,19 @@ class Parser:
 
     ####################     FORMAT HANDLERS     #####################
 
+    def format_handler_list_item(self, node: NavigableString):
+        parent = node.parent
+        grandparent = parent.parent
+        if grandparent.name == 'ol':
+            # find index of li among siblings
+            idx = 1 + sum(1 for prev in parent.previous_siblings if prev.name == 'li')
+            return f"  {idx}. {str(node)}"
+        else:  # ul
+            return f"  • {str(node)}"
+        
+    def format_handler_blockquote(self, node: NavigableString):
+        return f'\n"{str(node)}"\n\n'
+
     def format_handler_math(self, node: NavigableString):
         # TODO: implement
-        pass
+        return "MATH GOES HERE"
