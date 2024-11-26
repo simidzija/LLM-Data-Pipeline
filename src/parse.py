@@ -14,7 +14,6 @@ class Parser:
     def __init__(self):
         # Tag sets
         self.allowed_tags = set(['div', 'p', 'ol', 'ul', 'blockquote', 'dl'])
-        self.unwanted_tags = set(['script', 'style', 'mstyle'])
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
         
@@ -25,6 +24,13 @@ class Parser:
             'ol': lambda tag: self.tag_handler_list(tag, numbered=True),
             'ul': lambda tag: self.tag_handler_list(tag, numbered=False),
             'blockquote': self.tag_handler_blockquote
+        }
+
+        self.FILTER_HANDLERS = {
+            'script': self.filter_handler_unwanted,
+            'style': self.filter_handler_unwanted,
+            'mstyle': self.filter_handler_unwanted,
+            'sup': self.filter_handler_sup
         }
 
         self.FORMAT_HANDLERS = {
@@ -98,6 +104,8 @@ class Parser:
         
         return text
 
+    ####################     Helper Functions     #####################
+
     def get_text_helper(self, tag: Tag, newline=True):
         """Parses tag by iterating over descendent nodes and calling appropriate format handler. Used by tag handlers."""
         text = ""
@@ -111,48 +119,10 @@ class Parser:
             text += '\n'
         return text
 
-
     def keep_node(self, node: NavigableString):
-        """Return True if we should keep NavigableString node"""
+        """Return True if we should keep NavigableString node."""
         parent = node.parent
-        name = parent.name
-        class_ = set(parent.get('class', []))
-
-        if name in self.unwanted_tags:
-            return False
-        elif name == 'sup':
-            if class_ == {'noprint','Inline-Template','Template-Fact'}:
-                # this corresponds to [citation needed] tags
-                return False
-            elif class_ == {'reference'}:
-                return False
-
-        return True 
-
-
-    ####################     FORMAT HANDLERS     #####################
-
-    def format_handler_math(self, node: NavigableString):
-        # TODO: implement
-        pass
-
-
-    ####################     TAG HANDLERS     #####################
-
-    def tag_handler_simple(self, tag):
-        text = self.get_text_helper(tag)
-        return text
-
-    def tag_handler_list(self, tag, numbered=False):
-        text = ""
-        for i, item in enumerate(tag.find_all('li', recursive=False), 1):
-            bullet = f"{i}." if numbered else "•"
-            text += f"  {bullet} {self.get_text_helper(item)}"
-        return text
-    
-    def tag_handler_blockquote(self, tag):
-        text = f'\n"{self.get_text_helper(tag, newline=False)}"\n\n'
-        return text
+        return self.FILTER_HANDLERS.get(parent.name, lambda x: True)(parent)
 
     def is_end(self, tag: Tag):
         if tag.name != "div":
@@ -172,6 +142,44 @@ class Parser:
             classes = set(tag.get("class", []))
             return self.boundary_classes.intersection(classes)
 
+
+    ####################     TAG HANDLERS     #####################
+
+    def tag_handler_simple(self, tag):
+        text = self.get_text_helper(tag)
+        return text
+
+    def tag_handler_list(self, tag, numbered=False):
+        text = ""
+        for i, item in enumerate(tag.find_all('li', recursive=False), 1):
+            bullet = f"{i}." if numbered else "•"
+            text += f"  {bullet} {self.get_text_helper(item)}"
+        return text
+    
+    def tag_handler_blockquote(self, tag):
+        text = f'\n"{self.get_text_helper(tag, newline=False)}"\n\n'
+        return text
+
+
         
+    ####################     FILTER HANDLERS     #####################
 
+    def filter_handler_unwanted(self, tag: Tag):
+        return False
+    
+    def filter_handler_sup(self, tag: Tag):
+        class_ = set(tag.get('class', []))
 
+        if class_ == {'noprint','Inline-Template','Template-Fact'}:
+            # this corresponds to [citation needed] tags
+            return False
+        elif class_ == {'reference'}:
+            return False
+        else: 
+            return True
+
+    ####################     FORMAT HANDLERS     #####################
+
+    def format_handler_math(self, node: NavigableString):
+        # TODO: implement
+        pass
