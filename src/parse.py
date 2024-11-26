@@ -12,18 +12,23 @@ from utils import Logger
 
 class Parser:
     def __init__(self):
-        # Tags
+        # Tag sets
         self.allowed_tags = set(['div', 'p', 'ol', 'ul', 'blockquote', 'dl'])
         self.unwanted_tags = set(['script', 'style', 'mstyle'])
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
         
+        # Handlers 
         self.TAG_HANDLERS = {
-            'p': self.get_text_from_p,
-            'dl': self.get_text_from_dl,
-            'ol': self.get_text_from_ol,
-            'ul': self.get_text_from_ul,
-            'blockquote': self.get_text_from_blockquote
+            'p': self.tag_handler_simple,
+            'dl': self.tag_handler_simple,
+            'ol': lambda tag: self.tag_handler_list(tag, numbered=True),
+            'ul': lambda tag: self.tag_handler_list(tag, numbered=False),
+            'blockquote': self.tag_handler_blockquote
+        }
+
+        self.FORMAT_HANDLERS = {
+            'math': self.format_handler_math
         }
 
         # Logger
@@ -97,19 +102,18 @@ class Parser:
     def get_text_helper(self, tag: Tag, newline=True):
         text = ""
         for node in tag.descendants:
-            if self.keep_text_node(node):
-                text += str(node)
+            if isinstance(node, NavigableString):
+                if self.keep_node(node):
+                    text += self.FORMAT_HANDLERS.get(node.parent.name, lambda x: str(x))(node)
 
         text = text.strip()
         if newline:
             text += '\n'
         return text
 
-    def keep_text_node(self, node: Tag):
-        """Return True if node is a text node and if we should keep it"""
-        if not isinstance(node, NavigableString):
-            return False
-        
+
+    def keep_node(self, node: NavigableString):
+        """Return True if we should keep NavigableString node"""
         parent = node.parent
         name = parent.name
         class_ = set(parent.get('class', []))
@@ -125,30 +129,28 @@ class Parser:
 
         return True 
 
-    def get_text_from_p(self, tag):
+
+    ####################     FORMAT HANDLERS     #####################
+
+    def format_handler_math(node: NavigableString):
+        # TODO: implement
+        pass
+
+
+    ####################     TAG HANDLERS     #####################
+
+    def tag_handler_simple(self, tag):
         text = self.get_text_helper(tag)
         return text
 
-    def get_text_from_dl(self, tag):
-        text = self.get_text_helper(tag)
-        return text
-    
-    def get_text_from_ol(self, tag):
+    def tag_handler_list(self, tag, numbered=False):
         text = ""
         for i, item in enumerate(tag.find_all('li', recursive=False), 1):
-            text += f"  {i}. {self.get_text_helper(item)}"
-        return text
-
-    def get_text_from_ul(self, tag):
-        text = ""
-        for item in tag.find_all('li', recursive=False):
-            text += f"  • {self.get_text_helper(item)}"
+            bullet = f"{i}." if numbered else "•"
+            text += f"  {bullet} {self.get_text_helper(item)}"
         return text
     
-    def get_text_from_blockquote(self, tag):
-        # if "templatequote" in tag.get("class", []):
-        #     text = f'\n{get_text_helper(tag)}'
-        # else:
+    def tag_handler_blockquote(self, tag):
         text = f'\n"{self.get_text_helper(tag, newline=False)}"\n\n'
         return text
 
