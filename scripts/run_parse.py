@@ -17,7 +17,7 @@ if __name__ == "__main__":
     
 
     with open('/Users/petar/Documents/llmdata/data/crawl_data_5.jsonl', 'r') as file:
-        for _ in range(12):
+        for _ in range(11):
             line = json.loads(next(iter(file)))
         url = line['url']
         html = line['text']

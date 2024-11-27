@@ -14,17 +14,16 @@ from utils import Logger
 class Parser:
     def __init__(self):
         # Tag sets
-        self.allowed_tags = set(['div', 'p', 'ol', 'ul', 'blockquote', 'dl'])
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
         
-        # Filter handlers
-        self.FILTER_HANDLERS = {
-            'script': self.filter_handler_unwanted,
-            'style': self.filter_handler_unwanted,
-            'mstyle': self.filter_handler_unwanted,
-            'sup': self.filter_handler_sup
-        }
+        # # Filter handlers
+        # self.FILTER_HANDLERS = {
+        #     'script': self.filter_handler_unwanted,
+        #     'style': self.filter_handler_unwanted,
+        #     'mstyle': self.filter_handler_unwanted,
+        #     'sup': self.filter_handler_sup
+        # }
 
         # Format rules
         self.FORMAT_RULES = [
@@ -64,15 +63,23 @@ class Parser:
     def parse(self, html: str) -> list[str]:
         """Parse wiki html and return list of text from each section."""
         soup = BeautifulSoup(html, 'html5lib')
-        main_tag = (soup
-            .find('div', id="mw-content-text")
-            .find('div', class_="mw-content-ltr mw-parser-output", lang="en")
-        )
+        main_tag = soup.find('div', class_="mw-content-ltr mw-parser-output", lang="en")
+
+        if not main_tag:
+            return []
 
         text_list = []
         text = ""
+        skip = True
 
-        for tag in main_tag.find_all(self.allowed_tags, recursive=False):
+        for tag in main_tag.find_all(recursive=False):
+            # skip nodes before opening paragraph
+            if skip:
+                if tag.name == 'p':
+                    skip = False
+                else:  # skip current tag
+                    continue
+
             if self.is_end(tag):
                 break
             elif self.is_new_section(tag):
@@ -132,24 +139,27 @@ class Parser:
             return self.boundary_classes.intersection(classes)
 
         
-    ####################     FILTER HANDLERS     #####################
+    # ####################     FILTER HANDLERS     #####################
 
-    def filter_handler_unwanted(self, node: NavigableString):
-        return False
+    # def filter_handler_unwanted(self, node: NavigableString):
+    #     return False
     
-    def filter_handler_sup(self, node: NavigableString):
-        class_ = set(node.parent.get('class', []))
+    # def filter_handler_sup(self, node: NavigableString):
+    #     class_ = set(node.parent.get('class', []))
 
-        if class_ == {'noprint','Inline-Template','Template-Fact'}:
-            # this corresponds to [citation needed] tags
-            return False
-        elif class_ == {'reference'}:
-            return False
-        else: 
-            return True
+    #     if class_ == {'noprint','Inline-Template','Template-Fact'}:
+    #         # this corresponds to [citation needed] tags
+    #         return False
+    #     elif class_ == {'reference'}:
+    #         return False
+    #     else: 
+    #         return True
 
 
+
+##############################################################################
 ################################ Format Rules ################################
+##############################################################################
 
 class FormatRule(ABC):
     @abstractmethod
@@ -174,5 +184,10 @@ class ListItemRule(FormatRule):
         else:  # ul
             return f"  • {str(node)}"
         
-# class BlockquoteHandler(FormatRule):
-#     def matches(self, node):
+class BlockquoteHandler(FormatRule):
+    # TODO: Implement
+    pass
+
+class MathHandler(FormatRule):
+    # TODO: Implement
+    pass
