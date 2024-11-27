@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4.element import Tag, NavigableString
+from abc import ABC, abstractmethod
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -17,7 +18,7 @@ class Parser:
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
         
-        # Handlers 
+        # Filter handlers
         self.FILTER_HANDLERS = {
             'script': self.filter_handler_unwanted,
             'style': self.filter_handler_unwanted,
@@ -25,11 +26,10 @@ class Parser:
             'sup': self.filter_handler_sup
         }
 
-        self.FORMAT_HANDLERS = {
-            'li': self.format_handler_list_item,
-            'blockquote': self.format_handler_blockquote,
-            'math': self.format_handler_math
-        }
+        # Format rules
+        self.FORMAT_RULES = [
+            ListItemRule()
+        ]
 
         # Logger
         self.logger = Logger('parse')
@@ -93,28 +93,25 @@ class Parser:
 
     ####################     Helper Functions     #####################
 
-    def get_text(self, tag: Tag, newline=True):
+    def get_text(self, tag: Tag):
         """Parses tag by iterating over descendent nodes. Used by tag handlers."""
         text = ""
         for node in tag.descendants:
             if isinstance(node, NavigableString):
-                if self.filter_node(node):
-                    text += self.format_node(node)
+                text += self.format_node(node)
 
         text = text.strip()
-        if newline:
-            text += '\n'
-        return text
+        text += '\n'
 
-    def filter_node(self, node: NavigableString):
-        """Filters NavigableString node by calling appropriate filter handler."""
-        parent = node.parent
-        return self.FILTER_HANDLERS.get(parent.name, lambda x: True)(node)
+        return text
 
     def format_node(self, node: NavigableString):
         """Formats NavigableString node by calling appropriate format handler."""
-        parent = node.parent
-        return self.FORMAT_HANDLERS.get(parent.name, lambda x: str(x))(node)
+        for rule in self.FORMAT_RULES:
+            if rule.matches(node):
+                return rule.format(node)
+            
+        return str(node)
 
     def is_end(self, tag: Tag):
         if tag.name != "div":
@@ -151,21 +148,31 @@ class Parser:
         else: 
             return True
 
-    ####################     FORMAT HANDLERS     #####################
 
-    def format_handler_list_item(self, node: NavigableString):
-        parent = node.parent
-        grandparent = parent.parent
-        if grandparent.name == 'ol':
+################################ Format Rules ################################
+
+class FormatRule(ABC):
+    @abstractmethod
+    def matches(self, node: NavigableString) -> bool:
+        pass
+
+    @abstractmethod
+    def format(self, node: NavigableString) -> str:
+        pass
+
+class ListItemRule(FormatRule):
+    def matches(self, node):
+        return (node.parent.name == 'li' and 
+                node.parent.parent and
+                node.parent.parent.name in ('ol', 'ul'))
+    
+    def format(self, node):
+        if node.parent.parent.name == 'ol':
             # find index of li among siblings
-            idx = 1 + sum(1 for prev in parent.previous_siblings if prev.name == 'li')
+            idx = 1 + sum(1 for prev in node.parent.previous_siblings if prev.name == 'li')
             return f"  {idx}. {str(node)}"
         else:  # ul
             return f"  • {str(node)}"
         
-    def format_handler_blockquote(self, node: NavigableString):
-        return f'\n"{str(node)}"\n\n'
-
-    def format_handler_math(self, node: NavigableString):
-        # TODO: implement
-        return "MATH GOES HERE"
+# class BlockquoteHandler(FormatRule):
+#     def matches(self, node):
