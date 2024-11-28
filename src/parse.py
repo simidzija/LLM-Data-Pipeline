@@ -26,19 +26,19 @@ class Parser:
         #     'sup': self.filter_handler_sup
         # }
 
-        # # Format rules
-        # self.FORMAT_RULES = [
-        #     ListItemRule()
-        # ]
+        # Format rules
+        self.FORMAT_RULES = [
+            MathRule(),
+        ]
 
-        # Format handlers
-        self.FORMAT_HANDLERS = {
-            # 'ol': lambda x: self.format_list(x, ordered=True),
-            # 'ul': lambda x: self.format_list(x, ordered=False),
-            # 'blockquote': self.format_blockquote,
-            'math': self.format_math,
-            # 'sup': self.format_sup,
-        }
+        # # Format handlers
+        # self.FORMAT_HANDLERS = {
+        #     # 'ol': lambda x: self.format_list(x, ordered=True),
+        #     # 'ul': lambda x: self.format_list(x, ordered=False),
+        #     # 'blockquote': self.format_blockquote,
+        #     'math': self.format_math,
+        #     # 'sup': self.format_sup,
+        # }
 
         # Logger
         self.logger = Logger('parse')
@@ -115,14 +115,19 @@ class Parser:
         #     print(f'Tag: <{node.name}>')
         # else:
         #     print(f'NavigableString: {str(node)[:20]}...')
+
         # Base cases
         if isinstance(node, NavigableString):
             return str(node)
-        elif node.name in self.unwanted_tags:
+        if node.name in self.unwanted_tags:
             return ""
-        elif node.name in self.FORMAT_HANDLERS:
-            handler = self.FORMAT_HANDLERS[node.name]
-            return handler(node)
+        for rule in self.FORMAT_RULES:
+            if rule.matches(node):
+                return rule.format(node)
+
+        # elif node.name in self.FORMAT_HANDLERS:
+        #     handler = self.FORMAT_HANDLERS[node.name]
+        #     return handler(node)
 
         # Recursion
         text = ""
@@ -173,10 +178,10 @@ class Parser:
 
     ####################     FILTER HANDLERS     #####################
 
-    def format_math(self, tag: Tag):
-        assert tag.name == 'math'
-        # TODO: Implement
-        return "MATH GOES HERE"
+    # def format_math(self, tag: Tag):
+    #     assert tag.name == 'math'
+    #     # TODO: Implement
+    #     return "MATH GOES HERE"
 
         
     # ####################     FILTER HANDLERS     #####################
@@ -201,14 +206,14 @@ class Parser:
 ################################ Format Rules ################################
 ##############################################################################
 
-# class FormatRule(ABC):
-#     @abstractmethod
-#     def matches(self, node: NavigableString) -> bool:
-#         pass
+class FormatRule(ABC):
+    @abstractmethod
+    def matches(self, tag: Tag) -> bool:
+        pass
 
-#     @abstractmethod
-#     def format(self, node: NavigableString) -> str:
-#         pass
+    @abstractmethod
+    def format(self, tag: Tag) -> str:
+        pass
 
 # class ListItemRule(FormatRule):
 #     def matches(self, node):
@@ -228,6 +233,24 @@ class Parser:
 #     # TODO: Implement
 #     pass
 
-# class MathHandler(FormatRule):
-#     # TODO: Implement
-#     pass
+class MathRule(FormatRule):
+    def matches(self, tag):
+        return "mwe-math-element" in tag.get('class', [])
+    
+    def format(self, tag):
+        annotation_tag = tag.find('annotation')
+        if not annotation_tag:
+            return "< --- MISSING MATH --- >"
+
+        child = tag.find('span')
+        inline = child and "mwe-math-mathml-inline" in child.get('class', [])
+        latex = annotation_tag.get_text().strip()
+
+        if inline:
+            return '$' + latex + '$ '
+        else:
+            return '$$' + latex + '$$\n'
+
+        
+        
+
