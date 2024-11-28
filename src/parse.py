@@ -18,27 +18,11 @@ class Parser:
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
         self.unwanted_tags = set(["meta", "style", "mstyle", "figure"])
         
-        # # Filter handlers
-        # self.FILTER_HANDLERS = {
-        #     'script': self.filter_handler_unwanted,
-        #     'style': self.filter_handler_unwanted,
-        #     'mstyle': self.filter_handler_unwanted,
-        #     'sup': self.filter_handler_sup
-        # }
-
-        # Format rules
-        self.FORMAT_RULES = [
-            MathRule(),
+        # Format handlers
+        self.FORMAT_HANDLERS = [
+            (self.match_list, self.format_list),
+            (self.match_math, self.format_math),
         ]
-
-        # # Format handlers
-        # self.FORMAT_HANDLERS = {
-        #     # 'ol': lambda x: self.format_list(x, ordered=True),
-        #     # 'ul': lambda x: self.format_list(x, ordered=False),
-        #     # 'blockquote': self.format_blockquote,
-        #     'math': self.format_math,
-        #     # 'sup': self.format_sup,
-        # }
 
         # Logger
         self.logger = Logger('parse')
@@ -109,25 +93,15 @@ class Parser:
         return text_list       
 
     ####################     Helper Functions     #####################
-
     def get_text(self, node: Tag | NavigableString):
-        # if node.name:
-        #     print(f'Tag: <{node.name}>')
-        # else:
-        #     print(f'NavigableString: {str(node)[:20]}...')
-
         # Base cases
         if isinstance(node, NavigableString):
             return str(node)
         if node.name in self.unwanted_tags:
             return ""
-        for rule in self.FORMAT_RULES:
-            if rule.matches(node):
-                return rule.format(node)
-
-        # elif node.name in self.FORMAT_HANDLERS:
-        #     handler = self.FORMAT_HANDLERS[node.name]
-        #     return handler(node)
+        for match_fcn, format_fcn in self.FORMAT_HANDLERS:
+            if match_fcn(node):
+                return format_fcn(node)
 
         # Recursion
         text = ""
@@ -136,27 +110,6 @@ class Parser:
 
         return text
         
-
-    # def get_text(self, tag: Tag):
-    #     """Parses tag by iterating over descendent nodes. Used by tag handlers."""
-    #     text = ""
-    #     for node in tag.descendants:
-    #         if isinstance(node, NavigableString):
-    #             text += self.format_node(node)
-
-    #     text = text.strip()
-    #     text += '\n'
-
-    #     return text
-
-    # def format_node(self, node: NavigableString):
-    #     """Formats NavigableString node by calling appropriate format handler."""
-    #     for rule in self.FORMAT_RULES:
-    #         if rule.matches(node):
-    #             return rule.format(node)
-            
-    #     return str(node)
-
     def is_end(self, tag: Tag):
         if tag.name != "div":
             return False
@@ -176,68 +129,33 @@ class Parser:
             return self.boundary_classes.intersection(classes)
 
 
-    ####################     FILTER HANDLERS     #####################
+    ##############################  Format Handlers  ###########################
 
-    # def format_math(self, tag: Tag):
-    #     assert tag.name == 'math'
-    #     # TODO: Implement
-    #     return "MATH GOES HERE"
+    # list
 
-        
-    # ####################     FILTER HANDLERS     #####################
-
-    # def filter_handler_unwanted(self, node: NavigableString):
-    #     return False
+    def match_list(self, tag: Tag):
+        return tag.name in ('ul', 'ol')
     
-    # def filter_handler_sup(self, node: NavigableString):
-    #     class_ = set(node.parent.get('class', []))
-
-    #     if class_ == {'noprint','Inline-Template','Template-Fact'}:
-    #         # this corresponds to [citation needed] tags
-    #         return False
-    #     elif class_ == {'reference'}:
-    #         return False
-    #     else: 
-    #         return True
-
-
-
-##############################################################################
-################################ Format Rules ################################
-##############################################################################
-
-class FormatRule(ABC):
-    @abstractmethod
-    def matches(self, tag: Tag) -> bool:
-        pass
-
-    @abstractmethod
-    def format(self, tag: Tag) -> str:
-        pass
-
-# class ListItemRule(FormatRule):
-#     def matches(self, node):
-#         return (node.parent.name == 'li' and 
-#                 node.parent.parent and
-#                 node.parent.parent.name in ('ol', 'ul'))
-    
-#     def format(self, node):
-#         if node.parent.parent.name == 'ol':
-#             # find index of li among siblings
-#             idx = 1 + sum(1 for prev in node.parent.previous_siblings if prev.name == 'li')
-#             return f"  {idx}. {str(node)}"
-#         else:  # ul
-#             return f"  • {str(node)}"
+    def format_list(self, tag: Tag):
+        ordered = tag.name == 'ol'
+        text = ""
+        if ordered:
+            idx = 1
+            for li_tag in tag.find_all('li', recursive=False):
+                text += f"  {idx}. {self.get_text(li_tag)}\n"
+                idx += 1
+        else:  # unordered
+            for li_tag in tag.find_all('li', recursive=False):
+                text += f"  • {self.get_text(li_tag)}\n"
         
-# class BlockquoteHandler(FormatRule):
-#     # TODO: Implement
-#     pass
+        return text
+        
+    # math
 
-class MathRule(FormatRule):
-    def matches(self, tag):
+    def match_math(self, tag):
         return "mwe-math-element" in tag.get('class', [])
     
-    def format(self, tag):
+    def format_math(self, tag):
         annotation_tag = tag.find('annotation')
         if not annotation_tag:
             return "< --- MISSING MATH --- >"
@@ -246,11 +164,12 @@ class MathRule(FormatRule):
         inline = child and "mwe-math-mathml-inline" in child.get('class', [])
         latex = annotation_tag.get_text().strip()
 
+        # remove prefix
+        prefix = '{\displaystyle' 
+        if latex.startswith(prefix):
+            latex = latex[len(prefix):-1].strip()
+
         if inline:
             return '$' + latex + '$ '
         else:
             return '$$' + latex + '$$\n'
-
-        
-        
-
