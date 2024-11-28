@@ -16,6 +16,7 @@ class Parser:
         # Tag sets
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.boundary_classes = set(["mw-heading2", "mw-heading3"])
+        self.unwanted_tags = set(["meta", "style", "mstyle", "figure"])
         
         # # Filter handlers
         # self.FILTER_HANDLERS = {
@@ -25,10 +26,19 @@ class Parser:
         #     'sup': self.filter_handler_sup
         # }
 
-        # Format rules
-        self.FORMAT_RULES = [
-            ListItemRule()
-        ]
+        # # Format rules
+        # self.FORMAT_RULES = [
+        #     ListItemRule()
+        # ]
+
+        # Format handlers
+        self.FORMAT_HANDLERS = {
+            # 'ol': lambda x: self.format_list(x, ordered=True),
+            # 'ul': lambda x: self.format_list(x, ordered=False),
+            # 'blockquote': self.format_blockquote,
+            'math': self.format_math,
+            # 'sup': self.format_sup,
+        }
 
         # Logger
         self.logger = Logger('parse')
@@ -73,7 +83,7 @@ class Parser:
         skip = True
 
         for tag in main_tag.find_all(recursive=False):
-            # skip nodes before opening paragraph
+            # skip tags before first 'p' tag
             if skip:
                 if tag.name == 'p':
                     skip = False
@@ -100,25 +110,47 @@ class Parser:
 
     ####################     Helper Functions     #####################
 
-    def get_text(self, tag: Tag):
-        """Parses tag by iterating over descendent nodes. Used by tag handlers."""
-        text = ""
-        for node in tag.descendants:
-            if isinstance(node, NavigableString):
-                text += self.format_node(node)
+    def get_text(self, node: Tag | NavigableString):
+        # if node.name:
+        #     print(f'Tag: <{node.name}>')
+        # else:
+        #     print(f'NavigableString: {str(node)[:20]}...')
+        # Base cases
+        if isinstance(node, NavigableString):
+            return str(node)
+        elif node.name in self.unwanted_tags:
+            return ""
+        elif node.name in self.FORMAT_HANDLERS:
+            handler = self.FORMAT_HANDLERS[node.name]
+            return handler(node)
 
-        text = text.strip()
-        text += '\n'
+        # Recursion
+        text = ""
+        for child in node.children:
+            text += self.get_text(child)
 
         return text
+        
 
-    def format_node(self, node: NavigableString):
-        """Formats NavigableString node by calling appropriate format handler."""
-        for rule in self.FORMAT_RULES:
-            if rule.matches(node):
-                return rule.format(node)
+    # def get_text(self, tag: Tag):
+    #     """Parses tag by iterating over descendent nodes. Used by tag handlers."""
+    #     text = ""
+    #     for node in tag.descendants:
+    #         if isinstance(node, NavigableString):
+    #             text += self.format_node(node)
+
+    #     text = text.strip()
+    #     text += '\n'
+
+    #     return text
+
+    # def format_node(self, node: NavigableString):
+    #     """Formats NavigableString node by calling appropriate format handler."""
+    #     for rule in self.FORMAT_RULES:
+    #         if rule.matches(node):
+    #             return rule.format(node)
             
-        return str(node)
+    #     return str(node)
 
     def is_end(self, tag: Tag):
         if tag.name != "div":
@@ -137,6 +169,14 @@ class Parser:
         else:
             classes = set(tag.get("class", []))
             return self.boundary_classes.intersection(classes)
+
+
+    ####################     FILTER HANDLERS     #####################
+
+    def format_math(self, tag: Tag):
+        assert tag.name == 'math'
+        # TODO: Implement
+        return "MATH GOES HERE"
 
         
     # ####################     FILTER HANDLERS     #####################
@@ -161,33 +201,33 @@ class Parser:
 ################################ Format Rules ################################
 ##############################################################################
 
-class FormatRule(ABC):
-    @abstractmethod
-    def matches(self, node: NavigableString) -> bool:
-        pass
+# class FormatRule(ABC):
+#     @abstractmethod
+#     def matches(self, node: NavigableString) -> bool:
+#         pass
 
-    @abstractmethod
-    def format(self, node: NavigableString) -> str:
-        pass
+#     @abstractmethod
+#     def format(self, node: NavigableString) -> str:
+#         pass
 
-class ListItemRule(FormatRule):
-    def matches(self, node):
-        return (node.parent.name == 'li' and 
-                node.parent.parent and
-                node.parent.parent.name in ('ol', 'ul'))
+# class ListItemRule(FormatRule):
+#     def matches(self, node):
+#         return (node.parent.name == 'li' and 
+#                 node.parent.parent and
+#                 node.parent.parent.name in ('ol', 'ul'))
     
-    def format(self, node):
-        if node.parent.parent.name == 'ol':
-            # find index of li among siblings
-            idx = 1 + sum(1 for prev in node.parent.previous_siblings if prev.name == 'li')
-            return f"  {idx}. {str(node)}"
-        else:  # ul
-            return f"  • {str(node)}"
+#     def format(self, node):
+#         if node.parent.parent.name == 'ol':
+#             # find index of li among siblings
+#             idx = 1 + sum(1 for prev in node.parent.previous_siblings if prev.name == 'li')
+#             return f"  {idx}. {str(node)}"
+#         else:  # ul
+#             return f"  • {str(node)}"
         
-class BlockquoteHandler(FormatRule):
-    # TODO: Implement
-    pass
+# class BlockquoteHandler(FormatRule):
+#     # TODO: Implement
+#     pass
 
-class MathHandler(FormatRule):
-    # TODO: Implement
-    pass
+# class MathHandler(FormatRule):
+#     # TODO: Implement
+#     pass
