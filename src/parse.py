@@ -3,7 +3,6 @@ import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4.element import Tag, NavigableString
-from abc import ABC, abstractmethod
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -16,7 +15,7 @@ class Parser:
         # Tag sets
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
         self.unwanted_tags = set(["meta", "style", "mstyle", "figure", "table"])
-        self.unwanted_classes = set(["noprint", "Inline-Template", "Template-Fact", "hatnote", "navigation-not-searchable", "mw-empty-elt", "mw-editsection", "reflist", "navbox"])
+        self.unwanted_classes = set(["noprint", "Inline-Template", "Template-Fact", "hatnote", "navigation-not-searchable", "mw-empty-elt", "mw-editsection", "reflist", "navbox", "navbox-styles", "metadata", "stub"])
         
         # Format handlers
         self.FORMAT_HANDLERS = [
@@ -60,17 +59,25 @@ class Parser:
 
     def parse(self, html: str) -> list[str]:
         """Parse wiki html and return list of text from each section."""
+        # soup
         soup = BeautifulSoup(html, 'html5lib')
+
+        # title
+        title = soup.find('span', class_="mw-page-title-main").get_text()
+
+        # main tag
         main_tag = soup.find('div', class_="mw-content-ltr mw-parser-output", lang="en")
 
         if not main_tag:
             return []
 
         text_list = []
-        text = ""
+        text = f'# {title}\n\n'
         skip = True
 
         for tag in main_tag.find_all(recursive=False):
+            
+
             # skip tags before first 'p' tag
             if skip:
                 if tag.name == 'p':
@@ -151,7 +158,6 @@ class Parser:
         return text   
 
     def is_end(self, tag: Tag):
-        # TODO: Clean this up and ensure that navbox doesn't appear
         if tag.name != "div":
             return False
 

@@ -16,11 +16,11 @@ if __name__ == "__main__":
     # parser.parse_jsonl(raw_path, parsed_path)
     
 
-    with open('/Users/petar/Documents/llmdata/data/crawl_data_5.jsonl', 'r') as file:
-        for _ in range(21):
-            line = json.loads(next(iter(file)))
-        url = line['url']
-        html = line['text']
+    # with open('/Users/petar/Documents/llmdata/data/crawl_data_5.jsonl', 'r') as file:
+    #     for _ in range(21):
+    #         line = json.loads(next(iter(file)))
+    #     url = line['url']
+    #     html = line['text']
 
-    parser = parse.Parser()
-    parser.parse(html)
+    # parser = parse.Parser()
+    # parser.parse(html)
