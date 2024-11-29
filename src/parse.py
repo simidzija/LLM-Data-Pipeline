@@ -103,37 +103,52 @@ class Parser:
     def get_text(self, node: Tag | NavigableString):
         # Base cases
         if isinstance(node, NavigableString):
-            text = self.indent.join(str(node).splitlines(keepends=True))
-            text = self.indent + text if self.last_char == '\n' else text
-            self.last_char = text[-1] if text else self.last_char
+            return self.format_string_node(node)
+        elif self.is_unwanted_tag(node):
+            return ""
+        elif self.is_unwanted_class(node):
+            return ""
+
+        text = self.format_tag_node(node)
+        if text is not None:
             return text
-        if node.name in self.unwanted_tags:
-            return ""
-        if set(node.get('class', [])).intersection(self.unwanted_classes):
-            return ""
-        for match_fcn, format_fcn in self.FORMAT_HANDLERS:
-            if match_fcn(node):
-                text = format_fcn(node)
-                self.last_char = text[-1] if text else self.last_char
-                return text
 
         # Recursion
-        text = ""
-        for child in node.children:
-            text += self.get_text(child)
-
+        text = self.parse_children(node)  # calls get_text on child nodes
         self.last_char = text[-1] if text else self.last_char
 
         return text
+    
+    ###########################  Helper Functions  ###########################
+
+    def format_tag_node(self, tag_node: Tag):
+        for match_fcn, format_fcn in self.FORMAT_HANDLERS:
+            if match_fcn(tag_node):
+                text = format_fcn(tag_node)
+                self.last_char = text[-1] if text else self.last_char
+                return text
+        
+        # if no formatter matches, return None
+        return None
+
+    def format_string_node(self, string_node: NavigableString):
+        text = self.indent.join(str(string_node).splitlines(keepends=True))
+        text = self.indent + text if self.last_char == '\n' else text
+        self.last_char = text[-1] if text else self.last_char
+        return text
+    
+    def is_unwanted_tag(self, node: Tag):
+        return node.name in self.unwanted_tags
+
+    def is_unwanted_class(self, node):
+        classes = set(node.get('class', []))
+        return classes.intersection(self.unwanted_classes)
     
     def parse_children(self, tag: Tag):
         text = ""
         for child in tag.children:
             text += self.get_text(child)
         return text   
-
-        
-    ###########################  Boundary Functions  ###########################
 
     def is_end(self, tag: Tag):
         # TODO: Clean this up and ensure that navbox doesn't appear
@@ -156,13 +171,6 @@ class Parser:
         title = node.get_text() if node else ""
         return title
         
-            
-
-        # if tag.name != "div":
-        #     return False
-        # else:
-        #     classes = set(tag.get("class", []))
-        #     return self.boundary_classes.intersection(classes)
 
 
     ##############################  Format Handlers  ###########################
