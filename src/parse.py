@@ -13,9 +13,9 @@ from utils import Logger
 class Parser:
     def __init__(self):
         # Tag sets
-        self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links"]) 
+        self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links", "References_and_notes", "Footnotes"]) 
         self.unwanted_tags = set(["meta", "style", "mstyle", "figure", "table"])
-        self.unwanted_classes = set(["noprint", "Inline-Template", "Template-Fact", "hatnote", "navigation-not-searchable", "mw-empty-elt", "mw-editsection", "reflist", "navbox", "navbox-styles", "metadata", "stub"])
+        self.unwanted_classes = set(["noprint", "Inline-Template", "Template-Fact", "hatnote", "navigation-not-searchable", "mw-empty-elt", "mw-editsection", "reflist", "navbox", "navbox-styles", "metadata", "stub", "noprint", "box-Fringe_theories", "gallery"])
         
         # Format handlers
         self.FORMAT_HANDLERS = [
@@ -63,7 +63,7 @@ class Parser:
         soup = BeautifulSoup(html, 'html5lib')
 
         # title
-        title = soup.find('span', class_="mw-page-title-main").get_text()
+        title = soup.find('h1', id="firstHeading").get_text().strip()
 
         # main tag
         main_tag = soup.find('div', class_="mw-content-ltr mw-parser-output", lang="en")
@@ -76,8 +76,6 @@ class Parser:
         skip = True
 
         for tag in main_tag.find_all(recursive=False):
-            
-
             # skip tags before first 'p' tag
             if skip:
                 if tag.name == 'p':
@@ -92,7 +90,7 @@ class Parser:
             elif self.is_new_section(tag):
                 if text:
                     text_list.append(text)
-                text = "## " + self.heading_title(tag, level='h2') + "\n\n"
+                text = "## " + self.heading_title(tag, level_str='h2') + "\n\n"
                 self.indent = ""
                 self.last_char = ""
             else:
@@ -101,9 +99,9 @@ class Parser:
         if text:
             text_list.append(text)
     
-        for text in text_list:
-            print('--------------------------------------------------------')
-            print(text)
+        # for text in text_list:
+        #     print('--------------------------------------------------------')
+        #     print(text)
 
         return text_list       
 
@@ -171,9 +169,9 @@ class Parser:
     def is_new_section(self, tag: Tag):
         return "mw-heading2" in tag.get('class', [])
     
-    def heading_title(self, tag: Tag, level: str):
+    def heading_title(self, tag: Tag, level_str: str):
         # level = 'h2', 'h3', etc
-        node = tag.find(level)
+        node = tag.find(level_str)
         title = node.get_text() if node else ""
         return title
         
@@ -196,6 +194,8 @@ class Parser:
         if ordered:
             idx = 1
             for li_tag in tag.find_all('li', recursive=False):
+                if "mw-empty-elt" in li_tag.get('class', []):
+                    continue
                 text += self.global_indent + f"{idx}. {self.get_text(li_tag)}\n"
                 idx += 1
         else:  # unordered
@@ -247,7 +247,7 @@ class Parser:
     
     def format_dl(self, tag: Tag):
         self.indent += "  "
-        text = self.parse_children(tag)
+        text = self.parse_children(tag) + '\n'
         self.indent = self.indent[:-2]
         return text
     
@@ -257,7 +257,7 @@ class Parser:
     
     def format_blockquote(self, tag: Tag):
         self.indent += "    "
-        text = self.parse_children(tag)
+        text = self.parse_children(tag) + '\n'
         self.indent = self.indent[:-4]
         return text
     
@@ -268,7 +268,7 @@ class Parser:
     def format_heading(self, tag: Tag):
         level = int(tag.name[-1])
         text = '#' * level + ' '
-        text += self.parse_children(tag)
+        text += self.parse_children(tag) + '\n'
         return text
 
 
