@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4.element import Tag, NavigableString
+from multiprocessing import Pool, current_process
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -29,32 +30,6 @@ class Parser:
 
         # Logger
         self.logger = Logger('parse')
-
-    def parse_jsonl(self, raw_path, parsed_path):
-        """Parse html data stored in .jsonl file."""
-        self.logger.info(f"Started parsing {raw_path}")
-        with open(raw_path, 'r') as raw, open(parsed_path, 'w') as parsed:
-            total_lines = sum(1 for _ in raw)
-            raw.seek(0)
-
-            for page_num, line in enumerate(raw, 1):
-                # read from file
-                entry = json.loads(line)
-                url = entry['url']
-                html = entry['text']
-
-                # log
-                self.logger.info(f"Parsing page {page_num} / {total_lines} : {url}")
-
-                # parse
-                text_list = self.parse(html)
-
-                # write to file
-                entry = {'url': url, 'text_list': text_list}
-                json.dump(entry, parsed)
-                parsed.write('\n')
-
-        self.logger.info(f"Finished parsing {raw_path}\n\n")
 
 
     def parse(self, html: str) -> list[str]:
@@ -271,4 +246,52 @@ class Parser:
         text += self.parse_children(tag) + '\n'
         return text
 
+
+# Multiprocessing functions
+
+def get_iterable(file, total_lines):
+    for page_num, line in enumerate(file, 1):
+        yield (page_num, line, total_lines)
+
+def worker_init():
+    global parser 
+    parser = Parser()
+    process = current_process()
+    print(f'Initialized {process.name}')
+
+def worker(page_num, line, total_lines):
+    # read from line
+    entry = json.loads(line)
+    url = entry['url']
+    html = entry['text']
+
+    # log
+    parser.logger.info(f"Parsing page {page_num} / {total_lines} : {url}")
+
+    # parse
+    text_list = parser.parse(html)
+    return url, text_list
+
+
+# Main entry point
+
+def parse_jsonl(raw_path: str, parsed_path: str, processes: int):
+    """Parse html data stored in .jsonl file."""
+    parser = Parser()
+    parser.logger.info(f"Started parsing {raw_path}")
+
+    # read from file
+    with open(raw_path, 'r') as infile, open(parsed_path, 'w') as outfile:
+        total_lines = sum(1 for _ in infile)
+        infile.seek(0)
+
+        with Pool(processes=processes, initializer=worker_init) as pool:
+            iterable = get_iterable(infile, total_lines)
+            for url, text_list in pool.starmap(worker, iterable):
+                entry = {'url': url, 'text_list': text_list}
+                json.dump(entry, outfile)
+                outfile.write('\n')
+
+
+    parser.logger.info(f"Finished parsing {raw_path}\n\n")
 
