@@ -8,7 +8,7 @@ from multiprocessing import Pool, current_process
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
 
-from utils import Logger
+from logger import Logger
 
 
 class Parser:

@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
 
-from utils import Logger
+from logger import Logger
 
 class Crawler:
     def __init__(self, data_filepath: str, queue_filepath: str, visited_filepath: str, reset=False, seeds=None):
