@@ -4,4 +4,5 @@ __pycache__
 data/*
 !data/crawl_data_5.jsonl
 !data/parse_data_5.jsonl
+!data/normalize_data_5.jsonl
 src/__pycache__
