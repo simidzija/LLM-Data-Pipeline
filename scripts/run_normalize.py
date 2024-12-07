@@ -9,5 +9,5 @@ from normalize import normalize_jsonl
 if __name__ == "__main__":
     inpath = str(ROOT/'data/parse_data_5.jsonl')
     outpath = str(ROOT/'data/normalize_data_5.jsonl')
-    normalize_jsonl(inpath, outpath, processes=10)
+    normalize_jsonl([inpath, inpath], outpath, processes=10)
     
