@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from multiprocessing import Pool, current_process
 import unicodedata
+import re
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -31,11 +32,23 @@ class Normalizer:
 
     def unicode_handler(self, text: str) -> str:
         """Normalize text according to the NFC Unicode normalization form."""
-        normalized_text = unicodedata.normalize('NFC', text)
-        return normalized_text
+        text = unicodedata.normalize('NFC', text)
+        return text
 
     def whitespace_handler(self, text: str) -> str:
-        # TODO: Implement
+        # normalize line endings to \n
+        text = text.replace('\r\n', '\n').replace('\r', '\n')
+
+        # remove unwanted control characters: ASCII 0-8, 11-31, and 127
+        text = re.sub(r'[\x00-\x08\x0B-\x1F\x7F]', '', text)
+
+        # normalize special space characters to regular space or empty string
+        text = re.sub(r'[\u00A0\u2002\u2003\u2009\u200A\u3000\t\f]', ' ', text)
+        text = re.sub(r'\u200B', '', text)
+
+        # replace multi-spaces with single space (except at beginning of line)
+        text = re.sub(r'(?<!^)(?<!\n) {2,}', ' ', text)
+
         return text
 
 
