@@ -49,6 +49,12 @@ class Normalizer:
         # replace multi-spaces with single space (except at beginning of line)
         text = re.sub(r'(?<!^)(?<!\n) {2,}', ' ', text)
 
+        # replace \n...\n, where ... has spaces or \ns, with \n\n
+        text = re.sub(r'(\n\s*)+\n', r'\n\n', text)
+
+        # strip leading and trailing whitespace
+        text = text.strip()
+
         return text
 
 

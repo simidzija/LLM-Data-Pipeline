@@ -1022,3 +1022,267 @@
 2024-12-09 20:10:36,355 - INFO - Finished normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
 
 
+2024-12-10 19:02:29,387 - INFO - Started normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
+2024-12-10 19:02:29,388 - INFO - Started normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:02:29,457 - INFO - Normalizing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-12-10 19:02:29,457 - INFO - Normalizing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-12-10 19:02:29,458 - INFO - Normalizing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-12-10 19:02:29,458 - INFO - Normalizing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-12-10 19:02:29,458 - INFO - Normalizing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-12-10 19:02:29,458 - INFO - Normalizing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-12-10 19:02:29,458 - INFO - Normalizing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-12-10 19:02:29,458 - INFO - Normalizing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-12-10 19:02:29,459 - INFO - Normalizing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-12-10 19:02:29,459 - INFO - Normalizing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-12-10 19:02:29,459 - INFO - Normalizing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-12-10 19:02:29,459 - INFO - Normalizing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-12-10 19:02:29,459 - INFO - Normalizing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-12-10 19:02:29,459 - INFO - Normalizing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-12-10 19:02:29,460 - INFO - Normalizing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-12-10 19:02:29,460 - INFO - Normalizing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-12-10 19:02:29,460 - INFO - Normalizing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-12-10 19:02:29,461 - INFO - Normalizing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-12-10 19:02:29,461 - INFO - Normalizing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-12-10 19:02:29,461 - INFO - Normalizing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-12-10 19:02:29,461 - INFO - Normalizing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-12-10 19:02:29,461 - INFO - Normalizing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-12-10 19:02:29,461 - INFO - Normalizing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-12-10 19:02:29,461 - INFO - Normalizing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-12-10 19:02:29,462 - INFO - Normalizing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-12-10 19:02:29,462 - INFO - Normalizing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-12-10 19:02:29,462 - INFO - Normalizing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-12-10 19:02:29,462 - INFO - Normalizing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-12-10 19:02:29,462 - INFO - Normalizing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-12-10 19:02:29,463 - INFO - Normalizing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-12-10 19:02:29,463 - INFO - Normalizing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-12-10 19:02:29,463 - INFO - Normalizing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-12-10 19:02:29,463 - INFO - Normalizing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-12-10 19:02:29,463 - INFO - Normalizing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-12-10 19:02:29,464 - INFO - Normalizing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-12-10 19:02:29,464 - INFO - Normalizing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-12-10 19:02:29,467 - INFO - Normalizing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-12-10 19:02:29,467 - INFO - Normalizing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-12-10 19:02:29,468 - INFO - Normalizing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-12-10 19:02:29,469 - INFO - Normalizing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-12-10 19:02:29,475 - INFO - Finished normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:02:29,476 - INFO - Started normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:02:29,538 - INFO - Normalizing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-12-10 19:02:29,538 - INFO - Normalizing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-12-10 19:02:29,539 - INFO - Normalizing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-12-10 19:02:29,539 - INFO - Normalizing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-12-10 19:02:29,539 - INFO - Normalizing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-12-10 19:02:29,539 - INFO - Normalizing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-12-10 19:02:29,539 - INFO - Normalizing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-12-10 19:02:29,539 - INFO - Normalizing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-12-10 19:02:29,540 - INFO - Normalizing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-12-10 19:02:29,540 - INFO - Normalizing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-12-10 19:02:29,540 - INFO - Normalizing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-12-10 19:02:29,540 - INFO - Normalizing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-12-10 19:02:29,540 - INFO - Normalizing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-12-10 19:02:29,540 - INFO - Normalizing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-12-10 19:02:29,540 - INFO - Normalizing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-12-10 19:02:29,540 - INFO - Normalizing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-12-10 19:02:29,541 - INFO - Normalizing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-12-10 19:02:29,541 - INFO - Normalizing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-12-10 19:02:29,541 - INFO - Normalizing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-12-10 19:02:29,541 - INFO - Normalizing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-12-10 19:02:29,541 - INFO - Normalizing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-12-10 19:02:29,541 - INFO - Normalizing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-12-10 19:02:29,542 - INFO - Normalizing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-12-10 19:02:29,542 - INFO - Normalizing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-12-10 19:02:29,542 - INFO - Normalizing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-12-10 19:02:29,542 - INFO - Normalizing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-12-10 19:02:29,542 - INFO - Normalizing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-12-10 19:02:29,542 - INFO - Normalizing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-12-10 19:02:29,542 - INFO - Normalizing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-12-10 19:02:29,542 - INFO - Normalizing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-12-10 19:02:29,542 - INFO - Normalizing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-12-10 19:02:29,542 - INFO - Normalizing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-12-10 19:02:29,543 - INFO - Normalizing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-12-10 19:02:29,543 - INFO - Normalizing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-12-10 19:02:29,543 - INFO - Normalizing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-12-10 19:02:29,543 - INFO - Normalizing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-12-10 19:02:29,543 - INFO - Normalizing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-12-10 19:02:29,545 - INFO - Normalizing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-12-10 19:02:29,545 - INFO - Normalizing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-12-10 19:02:29,546 - INFO - Normalizing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-12-10 19:02:29,554 - INFO - Finished normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:02:29,555 - INFO - Finished normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
+
+
+2024-12-10 19:18:39,568 - INFO - Started normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
+2024-12-10 19:18:39,569 - INFO - Started normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:18:39,648 - INFO - Normalizing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-12-10 19:18:39,650 - INFO - Normalizing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-12-10 19:18:39,650 - INFO - Normalizing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-12-10 19:18:39,651 - INFO - Normalizing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-12-10 19:18:39,651 - INFO - Normalizing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-12-10 19:18:39,652 - INFO - Normalizing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-12-10 19:18:39,652 - INFO - Normalizing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-12-10 19:18:39,652 - INFO - Normalizing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-12-10 19:18:39,652 - INFO - Normalizing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-12-10 19:18:39,653 - INFO - Normalizing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-12-10 19:18:39,653 - INFO - Normalizing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-12-10 19:18:39,654 - INFO - Normalizing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-12-10 19:18:39,654 - INFO - Normalizing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-12-10 19:18:39,654 - INFO - Normalizing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-12-10 19:18:39,654 - INFO - Normalizing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-12-10 19:18:39,655 - INFO - Normalizing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-12-10 19:18:39,655 - INFO - Normalizing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-12-10 19:18:39,655 - INFO - Normalizing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-12-10 19:18:39,655 - INFO - Normalizing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-12-10 19:18:39,655 - INFO - Normalizing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-12-10 19:18:39,655 - INFO - Normalizing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-12-10 19:18:39,656 - INFO - Normalizing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-12-10 19:18:39,656 - INFO - Normalizing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-12-10 19:18:39,656 - INFO - Normalizing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-12-10 19:18:39,656 - INFO - Normalizing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-12-10 19:18:39,657 - INFO - Normalizing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-12-10 19:18:39,657 - INFO - Normalizing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-12-10 19:18:39,656 - INFO - Normalizing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-12-10 19:18:39,657 - INFO - Normalizing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-12-10 19:18:39,657 - INFO - Normalizing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-12-10 19:18:39,657 - INFO - Normalizing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-12-10 19:18:39,657 - INFO - Normalizing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-12-10 19:18:39,657 - INFO - Normalizing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-12-10 19:18:39,658 - INFO - Normalizing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-12-10 19:18:39,658 - INFO - Normalizing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-12-10 19:18:39,658 - INFO - Normalizing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-12-10 19:18:39,658 - INFO - Normalizing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-12-10 19:18:39,658 - INFO - Normalizing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-12-10 19:18:39,658 - INFO - Normalizing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-12-10 19:18:39,660 - INFO - Normalizing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-12-10 19:18:39,668 - INFO - Finished normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:18:39,668 - INFO - Started normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:18:39,720 - INFO - Normalizing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-12-10 19:18:39,721 - INFO - Normalizing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-12-10 19:18:39,721 - INFO - Normalizing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-12-10 19:18:39,722 - INFO - Normalizing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-12-10 19:18:39,722 - INFO - Normalizing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-12-10 19:18:39,722 - INFO - Normalizing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-12-10 19:18:39,722 - INFO - Normalizing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-12-10 19:18:39,722 - INFO - Normalizing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-12-10 19:18:39,723 - INFO - Normalizing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-12-10 19:18:39,723 - INFO - Normalizing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-12-10 19:18:39,723 - INFO - Normalizing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-12-10 19:18:39,723 - INFO - Normalizing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-12-10 19:18:39,724 - INFO - Normalizing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-12-10 19:18:39,724 - INFO - Normalizing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-12-10 19:18:39,724 - INFO - Normalizing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-12-10 19:18:39,724 - INFO - Normalizing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-12-10 19:18:39,725 - INFO - Normalizing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-12-10 19:18:39,725 - INFO - Normalizing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-12-10 19:18:39,725 - INFO - Normalizing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-12-10 19:18:39,726 - INFO - Normalizing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-12-10 19:18:39,726 - INFO - Normalizing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-12-10 19:18:39,726 - INFO - Normalizing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-12-10 19:18:39,726 - INFO - Normalizing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-12-10 19:18:39,726 - INFO - Normalizing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-12-10 19:18:39,727 - INFO - Normalizing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-12-10 19:18:39,727 - INFO - Normalizing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-12-10 19:18:39,727 - INFO - Normalizing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-12-10 19:18:39,727 - INFO - Normalizing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-12-10 19:18:39,727 - INFO - Normalizing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-12-10 19:18:39,727 - INFO - Normalizing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-12-10 19:18:39,728 - INFO - Normalizing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-12-10 19:18:39,728 - INFO - Normalizing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-12-10 19:18:39,728 - INFO - Normalizing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-12-10 19:18:39,728 - INFO - Normalizing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-12-10 19:18:39,729 - INFO - Normalizing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-12-10 19:18:39,729 - INFO - Normalizing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-12-10 19:18:39,729 - INFO - Normalizing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-12-10 19:18:39,730 - INFO - Normalizing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-12-10 19:18:39,730 - INFO - Normalizing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-12-10 19:18:39,730 - INFO - Normalizing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-12-10 19:18:39,737 - INFO - Finished normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:18:39,737 - INFO - Finished normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
+
+
+2024-12-10 19:25:11,292 - INFO - Started normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
+2024-12-10 19:25:11,292 - INFO - Started normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:25:11,360 - INFO - Normalizing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-12-10 19:25:11,361 - INFO - Normalizing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-12-10 19:25:11,361 - INFO - Normalizing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-12-10 19:25:11,362 - INFO - Normalizing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-12-10 19:25:11,362 - INFO - Normalizing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-12-10 19:25:11,362 - INFO - Normalizing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-12-10 19:25:11,362 - INFO - Normalizing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-12-10 19:25:11,363 - INFO - Normalizing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-12-10 19:25:11,363 - INFO - Normalizing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-12-10 19:25:11,363 - INFO - Normalizing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-12-10 19:25:11,363 - INFO - Normalizing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-12-10 19:25:11,364 - INFO - Normalizing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-12-10 19:25:11,364 - INFO - Normalizing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-12-10 19:25:11,364 - INFO - Normalizing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-12-10 19:25:11,364 - INFO - Normalizing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-12-10 19:25:11,364 - INFO - Normalizing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-12-10 19:25:11,365 - INFO - Normalizing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-12-10 19:25:11,365 - INFO - Normalizing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-12-10 19:25:11,365 - INFO - Normalizing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-12-10 19:25:11,366 - INFO - Normalizing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-12-10 19:25:11,366 - INFO - Normalizing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-12-10 19:25:11,366 - INFO - Normalizing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-12-10 19:25:11,366 - INFO - Normalizing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-12-10 19:25:11,367 - INFO - Normalizing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-12-10 19:25:11,367 - INFO - Normalizing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-12-10 19:25:11,367 - INFO - Normalizing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-12-10 19:25:11,367 - INFO - Normalizing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-12-10 19:25:11,367 - INFO - Normalizing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-12-10 19:25:11,367 - INFO - Normalizing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-12-10 19:25:11,368 - INFO - Normalizing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-12-10 19:25:11,368 - INFO - Normalizing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-12-10 19:25:11,368 - INFO - Normalizing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-12-10 19:25:11,368 - INFO - Normalizing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-12-10 19:25:11,368 - INFO - Normalizing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-12-10 19:25:11,369 - INFO - Normalizing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-12-10 19:25:11,369 - INFO - Normalizing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-12-10 19:25:11,370 - INFO - Normalizing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-12-10 19:25:11,370 - INFO - Normalizing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-12-10 19:25:11,370 - INFO - Normalizing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-12-10 19:25:11,371 - INFO - Normalizing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-12-10 19:25:11,378 - INFO - Finished normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:25:11,378 - INFO - Started normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:25:11,433 - INFO - Normalizing page 1 / 40 : https://en.wikipedia.org/wiki/Michel_Weber
+2024-12-10 19:25:11,433 - INFO - Normalizing page 2 / 40 : https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2024-12-10 19:25:11,434 - INFO - Normalizing page 3 / 40 : https://en.wikipedia.org/wiki/Mind_(journal)
+2024-12-10 19:25:11,434 - INFO - Normalizing page 4 / 40 : https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2024-12-10 19:25:11,434 - INFO - Normalizing page 5 / 40 : https://en.wikipedia.org/wiki/Herbert_Feigl
+2024-12-10 19:25:11,434 - INFO - Normalizing page 6 / 40 : https://en.wikipedia.org/wiki/Tim_Crane
+2024-12-10 19:25:11,434 - INFO - Normalizing page 7 / 40 : https://en.wikipedia.org/wiki/Celia_Green
+2024-12-10 19:25:11,435 - INFO - Normalizing page 8 / 40 : https://en.wikipedia.org/wiki/Tharpa_Publications
+2024-12-10 19:25:11,436 - INFO - Normalizing page 9 / 40 : https://en.wikipedia.org/wiki/Mill%27s_Methods
+2024-12-10 19:25:11,437 - INFO - Normalizing page 10 / 40 : https://en.wikipedia.org/wiki/Construct_(philosophy)
+2024-12-10 19:25:11,438 - INFO - Normalizing page 11 / 40 : https://en.wikipedia.org/wiki/Correlation_function
+2024-12-10 19:25:11,438 - INFO - Normalizing page 12 / 40 : https://en.wikipedia.org/wiki/Creative_synthesis
+2024-12-10 19:25:11,439 - INFO - Normalizing page 13 / 40 : https://en.wikipedia.org/wiki/Functional_contextualism
+2024-12-10 19:25:11,439 - INFO - Normalizing page 15 / 40 : https://en.wikipedia.org/wiki/Null_hypothesis
+2024-12-10 19:25:11,439 - INFO - Normalizing page 14 / 40 : https://en.wikipedia.org/wiki/Alternative_hypothesis
+2024-12-10 19:25:11,439 - INFO - Normalizing page 16 / 40 : https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2024-12-10 19:25:11,440 - INFO - Normalizing page 17 / 40 : https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2024-12-10 19:25:11,440 - INFO - Normalizing page 18 / 40 : https://en.wikipedia.org/wiki/Evidence-based_practice
+2024-12-10 19:25:11,440 - INFO - Normalizing page 19 / 40 : https://en.wikipedia.org/wiki/Scientific_pluralism
+2024-12-10 19:25:11,440 - INFO - Normalizing page 20 / 40 : https://en.wikipedia.org/wiki/Testability
+2024-12-10 19:25:11,440 - INFO - Normalizing page 21 / 40 : https://en.wikipedia.org/wiki/Theory_choice
+2024-12-10 19:25:11,440 - INFO - Normalizing page 24 / 40 : https://en.wikipedia.org/wiki/Constructive_empiricism
+2024-12-10 19:25:11,440 - INFO - Normalizing page 23 / 40 : https://en.wikipedia.org/wiki/Control_variable
+2024-12-10 19:25:11,440 - INFO - Normalizing page 22 / 40 : https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2024-12-10 19:25:11,441 - INFO - Normalizing page 25 / 40 : https://en.wikipedia.org/wiki/Constructive_realism
+2024-12-10 19:25:11,441 - INFO - Normalizing page 26 / 40 : https://en.wikipedia.org/wiki/Inductionism
+2024-12-10 19:25:11,441 - INFO - Normalizing page 27 / 40 : https://en.wikipedia.org/wiki/Model-dependent_realism
+2024-12-10 19:25:11,441 - INFO - Normalizing page 28 / 40 : https://en.wikipedia.org/wiki/Scientific_formalism
+2024-12-10 19:25:11,441 - INFO - Normalizing page 29 / 40 : https://en.wikipedia.org/wiki/Descriptive_research
+2024-12-10 19:25:11,441 - INFO - Normalizing page 31 / 40 : https://en.wikipedia.org/wiki/Non-science
+2024-12-10 19:25:11,441 - INFO - Normalizing page 32 / 40 : https://en.wikipedia.org/wiki/Normative_science
+2024-12-10 19:25:11,441 - INFO - Normalizing page 30 / 40 : https://en.wikipedia.org/wiki/Hard_and_soft_science
+2024-12-10 19:25:11,441 - INFO - Normalizing page 33 / 40 : https://en.wikipedia.org/wiki/Protoscience
+2024-12-10 19:25:11,441 - INFO - Normalizing page 34 / 40 : https://en.wikipedia.org/wiki/Questionable_cause
+2024-12-10 19:25:11,442 - INFO - Normalizing page 35 / 40 : https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2024-12-10 19:25:11,442 - INFO - Normalizing page 36 / 40 : https://en.wikipedia.org/wiki/Rudolf_Steiner
+2024-12-10 19:25:11,442 - INFO - Normalizing page 37 / 40 : https://en.wikipedia.org/wiki/Karl_Pearson
+2024-12-10 19:25:11,443 - INFO - Normalizing page 38 / 40 : https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2024-12-10 19:25:11,444 - INFO - Normalizing page 39 / 40 : https://en.wikipedia.org/wiki/Michael_Polanyi
+2024-12-10 19:25:11,444 - INFO - Normalizing page 40 / 40 : https://en.wikipedia.org/wiki/Imre_Lakatos
+2024-12-10 19:25:11,450 - INFO - Finished normalizing /Users/petar/Documents/llmdata/data/parse_data_5.jsonl
+2024-12-10 19:25:11,450 - INFO - Finished normalizing ['/Users/petar/Documents/llmdata/data/parse_data_5.jsonl', '/Users/petar/Documents/llmdata/data/parse_data_5.jsonl']
+
+
