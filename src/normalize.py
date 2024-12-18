@@ -16,6 +16,7 @@ class Normalizer:
         self.HANDLERS = [
             self.unicode_handler,
             self.whitespace_handler,
+            self.quote_dash_handler
         ]
 
         # Logger
@@ -56,6 +57,9 @@ class Normalizer:
         text = text.strip()
 
         return text
+
+    def quote_dash_handler(self, text: str) -> str:
+        pass
 
 
 # Multiprocessing functions
