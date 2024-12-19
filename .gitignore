@@ -6,3 +6,4 @@ data/*
 !data/parse_data_5.jsonl
 !data/normalize_data_5.jsonl
 src/__pycache__
+log/.__*.lock
