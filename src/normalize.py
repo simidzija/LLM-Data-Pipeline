@@ -16,7 +16,7 @@ class Normalizer:
         self.HANDLERS = [
             self.unicode_handler,
             self.whitespace_handler,
-            self.quote_dash_handler
+            self.quote_handler,
         ]
 
         # Logger
@@ -58,8 +58,15 @@ class Normalizer:
 
         return text
 
-    def quote_dash_handler(self, text: str) -> str:
-        pass
+    def quote_handler(self, text: str) -> str:
+        # replace double curly quotes with double straight quotes
+        text = re.sub(r'[\u201C\u201D]', '\u0022', text)
+
+        # replace single curly quotes with single straight quotes
+        text = re.sub(r'[\u2018\u2019]', '\u0027', text)
+
+        return text
+
 
 
 # Multiprocessing functions
@@ -124,5 +131,3 @@ def normalize_jsonl(inpath_list: list[str] | str, outpath: str, processes: int):
             normalizer.logger.info(f"Finished normalizing {inpath}")
         
     normalizer.logger.info(f"Finished normalizing {inpath_list}\n\n")
-
-
