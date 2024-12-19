@@ -7,13 +7,7 @@ sys.path.append(str(ROOT/'src'))
 from analyze import analyze_jsonl
 
 if __name__ == "__main__":
-    inpath = [
-        str(ROOT/'data/parse_data_1.jsonl'),
-        str(ROOT/'data/parse_data_2.jsonl'),
-        str(ROOT/'data/parse_data_3.jsonl'),
-        str(ROOT/'data/parse_data_4.jsonl'),
-        str(ROOT/'data/parse_data_5.jsonl')
-        ]
+    inpath = str(ROOT/'data/parse_data.jsonl')
     chars = ["\u0022",
              "\u0027", 
              "\u201c",
