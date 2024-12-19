@@ -12,7 +12,8 @@ if __name__ == "__main__":
         str(ROOT/'data/parse_data_2.jsonl'),
         str(ROOT/'data/parse_data_3.jsonl'),
         str(ROOT/'data/parse_data_4.jsonl'),
-        str(ROOT/'data/parse_data_5.jsonl')]
+        str(ROOT/'data/parse_data_5.jsonl')
+        ]
     chars = ["\u0022",
              "\u0027", 
              "\u201c",
@@ -34,6 +35,7 @@ if __name__ == "__main__":
     
     ################################  Results  ################################
 
+    # " = U+22    -  1560327 times
     # ' = U+27    -  1157724 times
     # “ = U+201C  -    15831 times
     # ” = U+201D  -    15699 times
