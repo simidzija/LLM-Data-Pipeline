@@ -17,6 +17,7 @@ class Normalizer:
             self.unicode_handler,
             self.whitespace_handler,
             self.quote_handler,
+            self.dash_handler
         ]
 
         # Logger
@@ -64,6 +65,12 @@ class Normalizer:
 
         # replace single curly quotes with single straight quotes
         text = re.sub(r'[\u2018\u2019]', '\u0027', text)
+
+        return text
+    
+    def dash_handler(self, text: str) -> str:
+        # replace minus with hyphen-minus
+        text = re.sub(r'\u2212', '\u002D', text)
 
         return text
 
