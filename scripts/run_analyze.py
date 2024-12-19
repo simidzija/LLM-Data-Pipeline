@@ -7,7 +7,7 @@ sys.path.append(str(ROOT/'src'))
 from analyze import analyze_jsonl
 
 if __name__ == "__main__":
-    inpath = str(ROOT/'data/parse_data.jsonl')
+    inpath = str(ROOT/'data/normalize_data.jsonl')
     chars = ["\u0022",
              "\u0027", 
              "\u201c",
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         freq = counter[char]
         print(f'{char} = U+{hex(ord(char))[2:].upper():4}  -  {freq:7d} times')
     
-    ################################  Results  ################################
+    #####################  Results - Before Normalization  ####################
 
     # " = U+22    -  1560327 times
     # ' = U+27    -  1157724 times
@@ -41,3 +41,19 @@ if __name__ == "__main__":
     # – = U+2013  -   416646 times
     # — = U+2014  -    96472 times
     # − = U+2212  -     5920 times
+
+
+    #####################  Results - Before Normalization  ####################
+
+    # " = U+22    -  1591857 times
+    # ' = U+27    -  1186833 times
+    # “ = U+201C  -        0 times
+    # ” = U+201D  -        0 times
+    # ‘ = U+2018  -        0 times
+    # ’ = U+2019  -        0 times
+    # ″ = U+2033  -     1763 times
+    # ′ = U+2032  -     3554 times
+    # - = U+2D    -  1605304 times
+    # – = U+2013  -   416646 times
+    # — = U+2014  -    96472 times
+    # − = U+2212  -        0 times
