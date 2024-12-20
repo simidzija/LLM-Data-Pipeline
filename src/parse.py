@@ -16,7 +16,7 @@ class Parser:
         # Tag sets
         self.end_ids = set(["See_also", "Notes", "References",  "Further_reading", "External_links", "References_and_notes", "Footnotes"]) 
         self.unwanted_tags = set(["meta", "style", "mstyle", "figure", "table"])
-        self.unwanted_classes = set(["noprint", "Inline-Template", "Template-Fact", "hatnote", "navigation-not-searchable", "mw-empty-elt", "mw-editsection", "reflist", "navbox", "navbox-styles", "metadata", "stub", "noprint", "box-Fringe_theories", "gallery"])
+        self.unwanted_classes = set(['Inline-Template', 'Template-Fact', 'ambox', 'box-Fringe_theories', 'cartbox', 'gallery', 'hatnote', 'infobox', 'locmap', 'magnify', 'mbox', 'media', 'metadata', 'mw-editsection', 'mw-empty-elt', 'navbar', 'navbox', 'navbox-styles', 'navigation-not-searchable', 'noprint', 'noprint', 'portal', 'reflist', 'reference', 'references', 'reflist', 'sidebar', 'stub', 'thumb', 'thumbinner', 'toc', 'vertical-navbox', 'wikitable'])
         
         # Format handlers
         self.FORMAT_HANDLERS = [
