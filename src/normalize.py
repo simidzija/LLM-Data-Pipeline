@@ -17,7 +17,7 @@ class Normalizer:
             self.unicode_handler,
             self.whitespace_handler,
             self.quote_handler,
-            self.dash_handler
+            self.dash_handler,
         ]
 
         # Logger
@@ -73,14 +73,14 @@ class Normalizer:
         text = re.sub(r'\u2212', '\u002D', text)
 
         return text
-
+    
 
 
 # Multiprocessing functions
 
-def get_iterable(file, total_lines):
+def get_iterable(file, total_lines, len_cutoff):
     for page_num, line in enumerate(file, 1):
-        yield (page_num, line, total_lines)
+        yield (page_num, line, total_lines, len_cutoff)
 
 def worker_init():
     global normalizer
@@ -88,7 +88,7 @@ def worker_init():
     process = current_process()
     print(f'Initialized {process.name}')
 
-def worker(page_num: int, line: str, total_lines: int) -> list:
+def worker(page_num: int, line: str, total_lines: int, len_cutoff: int) -> list:
     # read from line
     entry = json.loads(line)
     url = entry['url']
@@ -101,7 +101,8 @@ def worker(page_num: int, line: str, total_lines: int) -> list:
     normalized_text_list = []
     for text in text_list:
         normalized_text = normalizer.normalize(text)
-        normalized_text_list.append(normalized_text)
+        if len(normalized_text) >= len_cutoff:
+            normalized_text_list.append(normalized_text)
     
     return url, normalized_text_list
 
@@ -109,7 +110,7 @@ def worker(page_num: int, line: str, total_lines: int) -> list:
 
 # Main entry points
 
-def normalize_jsonl(inpath_list: list[str] | str, outpath: str, processes: int):
+def normalize_jsonl(inpath_list: list[str] | str, outpath: str, processes: int, len_cutoff: int=-1):
     """Normalize text stored in .jsonl file"""
     normalizer = Normalizer()
     normalizer.logger.info(f"Started normalizing {inpath_list}")
@@ -130,7 +131,7 @@ def normalize_jsonl(inpath_list: list[str] | str, outpath: str, processes: int):
             infile.seek(0)
 
             with Pool(processes=processes, initializer=worker_init) as pool:
-                iterable = get_iterable(infile, total_lines)
+                iterable = get_iterable(infile, total_lines, len_cutoff)
                 for url, text_list in pool.starmap(worker, iterable):
                     entry = {'url': url, 'text_list': text_list}
                     json.dump(entry, outfile)
