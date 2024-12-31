@@ -2,6 +2,7 @@ import mmh3
 import sys
 import json
 from pathlib import Path
+from collections import defaultdict
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -16,13 +17,15 @@ class Deduplicator:
         self.signature_len = signature_len
         self.band_size = band_size
         self.similarity_threshold = similarity_threshold
+        assert signature_len % band_size == 0, f"band_size ({band_size}) does not divide signature_len ({signature_len})"
+        self.n_bands = signature_len // band_size
 
         self.min_hashes = {}
-        self.lsh_dicts = []
+        self.lsh_dicts = [defaultdict(set) for _ in range(self.n_bands)]
         self.pars_to_remove = {}
 
         self.min_hash_fns = [lambda x, s=s: mmh3.hash(x, s) for s in range(signature_len)]
-        self.lsh_hash_fn = lambda x: mmh3.hash(x, len(signature_len))
+        self.lsh_hash_fn = lambda x, s=signature_len: mmh3.hash(x, s)
 
     def deduplicate(self):
         """Deduplicates infile and writes to outfile"""
@@ -77,11 +80,27 @@ class Deduplicator:
 
     def lsh_create_dicts(self):
         """Creates lsh_dicts list"""
-        pass
+        # loop over urls
+        for url, signatures in self.min_hashes.items():
+            # loop over signatures
+            for idx, signature in enumerate(signatures):
+                # loop over bands
+                for b, lsh_dict in zip(range(self.n_bands), self.lsh_dicts):
+                    # define band
+                    start = b * self.band_size
+                    end = start + self.band_size
+                    band = signature[start:end]
+                    band_bytes = str(band).encode()
+                    
+                    # compute hash val
+                    hash_val = self.lsh_hash_fn(band_bytes)
+
+                    # add to band dict
+                    lsh_dict[hash_val].add((url, idx))
 
     def lsh_get_pars_to_remove(self):
         """Create pars_to_remove dict"""
-        pass
+        
 
 
         
