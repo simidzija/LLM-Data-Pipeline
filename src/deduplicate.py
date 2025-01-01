@@ -22,7 +22,8 @@ class Deduplicator:
 
         self.min_hashes = {}
         self.lsh_dicts = [defaultdict(set) for _ in range(self.n_bands)]
-        self.pars_to_remove = {}
+        self.lsh_duplicate_candidates = []
+        self.texts_to_remove = {}
 
         self.min_hash_fns = [lambda x, s=s: mmh3.hash(x, s) for s in range(signature_len)]
         self.lsh_hash_fn = lambda x, s=signature_len: mmh3.hash(x, s)
@@ -35,16 +36,19 @@ class Deduplicator:
 
         # Locality-Sensitive Hashing
         self.lsh_create_dicts()
-        self.lsh_get_pars_to_remove()
+        self.lsh_get_duplicate_candidates()
+
+        # Texts to remove dict
+        self.get_texts_to_remove()
 
         # Create outfile
         with open(self.inpath, 'r') as infile, open(self.outpath, 'w') as outfile:
             for line in infile:
                 entry = json.loads(line)
                 url = entry['url']
-                if url in self.pars_to_remove:
+                if url in self.texts_to_remove:
                     text_list = entry['text_list']
-                    idxs = self.pars_to_remove[url]
+                    idxs = self.texts_to_remove[url]
                     for i in idxs:
                         text_list[i] = "<DUPLICATE_REMOVED>"
                 json.dump(entry, outfile)
@@ -98,8 +102,17 @@ class Deduplicator:
                     # add to band dict
                     lsh_dict[hash_val].add((url, idx))
 
-    def lsh_get_pars_to_remove(self):
-        """Create pars_to_remove dict"""
+    def lsh_get_duplicate_candidates(self):
+        """Create duplicate_candidates list"""
+        for lsh_dict in self.lsh_dicts:
+            for texts in lsh_dict.values():
+                if len(texts) > 1:
+                    self.lsh_duplicate_candidates.append(texts)
+
+    def get_texts_to_remove(self):
+        """Convert duplicate_candidates list to dict of texts to remove"""
+        for texts in self.lsh_duplicate_candidates:
+            pass
         
 
 
