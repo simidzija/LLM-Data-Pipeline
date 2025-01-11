@@ -55,7 +55,7 @@ class Deduplicator:
         self.get_texts_to_remove()
 
         # Create outfile
-        self.logger.info(f'Start writing to outfile {self.outfile}')
+        self.logger.info(f'Start writing to outfile {self.outpath}')
         with open(self.inpath, 'r') as infile, open(self.outpath, 'w') as outfile:
             for line in infile:
                 entry = json.loads(line)
@@ -68,7 +68,7 @@ class Deduplicator:
                         text_list[i] = "<DUPLICATE_REMOVED>"
                 json.dump(entry, outfile)
                 outfile.write('\n')
-        self.logger.info(f'Finish dedupling {self.inpath}\n')
+        self.logger.info(f'Finish deduplicating {self.inpath}\n')
         
                     
     def min_hash_jsonl(self):
@@ -157,7 +157,6 @@ class Deduplicator:
         sig2 = self.min_hashes[url2][idx2]
 
         jaccard_sim = self.jaccard(sig1, sig2)
-        print(jaccard_sim)
 
         return jaccard_sim > self.similarity_threshold
 

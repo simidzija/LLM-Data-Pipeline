@@ -15,6 +15,6 @@ if __name__ == "__main__":
                                 gram_len=5,
                                 signature_len=128,
                                 band_size=16,
-                                similarity_threshold=0.9)
+                                similarity_threshold=0.8)
 
     deduplicator.deduplicate()

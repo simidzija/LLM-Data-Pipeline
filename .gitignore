@@ -5,6 +5,7 @@ data/*
 !data/crawl_data_5.jsonl
 !data/parse_data_5.jsonl
 !data/normalize_data_5.jsonl
+!data/deduplicate_data_5.jsonl
 !data/*.pdf
 src/__pycache__
 log/.__*.lock
