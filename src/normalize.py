@@ -88,7 +88,7 @@ def worker_init():
     process = current_process()
     print(f'Initialized {process.name}')
 
-def worker(page_num: int, line: str, total_lines: int, len_cutoff: int) -> list:
+def worker(page_num: int, line: str, total_lines: int, len_cutoff: int):
     # read from line
     entry = json.loads(line)
     url = entry['url']
