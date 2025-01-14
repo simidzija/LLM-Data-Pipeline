@@ -64,7 +64,6 @@ def segment_jsonl(inpath: str, outpath: str, processes: int, omit_duplicates: bo
     segmenter.logger.info(f"Started segmenting {inpath}")
 
     with open(inpath, 'r') as infile, open(outpath, 'w') as outfile:
-        segmenter.logger.info(f"Started segmenting {inpath}")
         total_lines = sum(1 for _ in infile)
         infile.seek(0)
 
