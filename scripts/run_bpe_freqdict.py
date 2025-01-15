@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
 
-from freqdict import create_freq_dict_from_jsonl
+from bpe_freqdict import create_freq_dict_from_jsonl
 
 if __name__ == "__main__":
     # Corpus

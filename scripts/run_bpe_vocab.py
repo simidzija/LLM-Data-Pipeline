@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
 
-from bpe import create_vocab
+from bpe_vocab import create_vocab
 
 if __name__ == "__main__":
     freq_dict_path = str(ROOT/'data'/'freq_dict_5.jsonl')
