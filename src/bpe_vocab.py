@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from collections import defaultdict
 import warnings
+from tqdm import tqdm
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
@@ -25,18 +26,33 @@ class Vocab:
                 self.vocab.update(tokens)
                 self.freq_tokens[word] = (freq, tokens)
 
+        # Logger
+        self.logger = Logger('vocab')
+
+    def __len__(self):
+        return len(self.vocab)
+
     def increase_vocab(self, size: int) -> None:
         """Increase vocab to given size by performing BPE merges."""
-        if size < len(self.vocab):
-            raise ValueError(f'target vocab size ({size}) cannot be less than initial vocab size ({len(self.vocab)})')
+        if size < len(self):
+            raise ValueError(f'target vocab size ({size}) cannot be less than initial vocab size ({len(self)})')
 
-        while len(self.vocab) < size:
+        self.logger.info(f'Increasing vocab size from {len(self)} to {size}')
+
+        for s in tqdm(range(len(self.vocab), size)):
             pair = self.most_frequent_pair()
             if pair is None:
-                warnings.warn(f'Vocab size reached maximal value of {len(self.vocab)}, which is smaller than target value {size}.')
-                return
-            self.vocab.add(''.join(pair))
+                msg = f'Vocab size reached maximal value of {s}, which is smaller than target value {size}.\n'
+                warnings.warn(msg)
+                self.logger.info(msg)
+                break
+            joined = ''.join(pair)
+            self.vocab.add(joined)
             self.merge(pair)
+            self.logger.info(f'Vocab increased to size {s:6d} (target {size}): Added {joined} = {pair[0]} + {pair[1]}.')
+
+        self.save_vocab()
+        self.logger.info(f'Finished increasing vocab.\n')
 
     def most_frequent_pair(self) -> tuple[str, str] | None:
         """Return most frequent pair of adjacent tokens from token lists in self.freq_tokens"""
@@ -80,6 +96,10 @@ class Vocab:
             # replace tokens with new_tokens
             self.freq_tokens[word] = (freq, new_tokens)
             
+    def save_vocab(self):
+        with open(self.vocab_path, 'w') as f:
+            json.dump(list(self.vocab), f)
+
 
 
 

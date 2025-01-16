@@ -2,7 +2,7 @@
 .vscode
 __pycache__
 data/*
-!data/*_5.jsonl
+!data/*_5.json*
 !data/*.pdf
 src/__pycache__
 log/.__*.lock
