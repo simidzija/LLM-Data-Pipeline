@@ -18,7 +18,7 @@ class Vocab:
 
         # initialize vocab and create freq_tokens dict
         self.freq_tokens = {}  # {word1: (freq1, tokens1), etc.}
-        self.vocab = set()
+        self.vocab = set(' ')  # since we split at spaces
         with open(freq_dict_path, 'r') as f:
             freq_dict: dict[str, int] = json.load(f)
             for word, freq in freq_dict.items():
