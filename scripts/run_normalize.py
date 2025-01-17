@@ -1,9 +1,16 @@
+"""
+Script to normalize Wikipedia text. 
+
+Uses the functionality of normalize.py.
+"""
+
+# Standard library
 import sys
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from normalize import normalize_jsonl
 
 if __name__ == "__main__":

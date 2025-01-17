@@ -1,19 +1,39 @@
-import sys
-import requests
+"""
+Core functionality to crawl and scrape Wikipedia. 
+
+Contains:
+  - Crawler: class for crawling and scraping Wikipedia
+  - RequestHandler: class for limiting frequency of get requests
+  - WikiURLExtractor: Class for extracting urls from a Wikipedia page
+"""
+
+# Standard library
 import json
-import time
 import random
-from pathlib import Path
+import sys
+import time
 from collections import deque
+from pathlib import Path
+from typing import Optional
+
+# Third-party
+import requests
 from bs4 import BeautifulSoup
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
+
 class Crawler:
-    def __init__(self, data_filepath: str, queue_filepath: str, visited_filepath: str, reset=False, seeds=None):
+    """Class for crawling and scraping Wikipedia."""
+    def __init__(self, 
+                 data_filepath: str, 
+                 queue_filepath: str, 
+                 visited_filepath: str, 
+                 reset: bool=False, 
+                 seeds: Optional[list[str]]=None) -> None:
         super().__init__()
         self.data_filepath = data_filepath
         self.queue_filepath = queue_filepath
@@ -57,7 +77,8 @@ class Crawler:
 
         self.url_extracter = WikiURLExtractor(self.queue, self.extracted)
     
-    def scrape(self, url: str, response: requests.Response):
+    def scrape(self, url: str, response: requests.Response) -> None:
+        """Scrapes url, stores result, and extracts sub-urls."""
         # save data
         with open(self.data_filepath, 'a') as file:
             text = response.text
@@ -73,7 +94,10 @@ class Crawler:
         self.url_extracter.extract(text)
        
 
-    def crawl(self, max_pages: int=10):
+    def crawl(self, max_pages: int) -> None:
+        """Crawls until there are no more urls in self.queue or 
+        until max_pages reached"""
+
         self.logger.info("Started crawling")
         page_count = 0
 
@@ -101,13 +125,19 @@ class Crawler:
                 file.write('\n')
     
 class RequestHandler:
-    def __init__(self, refill_rate: float=1.0, bucket_limit: float=10.0):
+    """Class for handling frequency of get requests, so that we don't get 
+    blocked by Wikipedia."""
+
+    def __init__(self, 
+                 refill_rate: float=1.0, 
+                 bucket_limit: float=10.0) -> None:
         self.refill_rate = refill_rate # tokens / second
         self.bucket_limit = bucket_limit
         self.tokens = 0
         self.last_add = time.monotonic()
 
-    def wait(self):
+    def wait(self) -> None:
+        """Wait appropriate amount of time."""
         # add tokens to bucket
         new_tokens = self.refill_rate * (time.monotonic() - self.last_add)
         self.tokens = min(self.bucket_limit, self.tokens + new_tokens)
@@ -127,7 +157,8 @@ class RequestHandler:
             self.last_add = time.monotonic()
             self.tokens = 0
 
-    def request(self, url: str):
+    def request(self, url: str) -> None:
+        """Perform a request only after waiting appropriate amount of time."""
         self.wait()
         response = requests.get(url, headers={'User-Agent': 'WikiCrawler/1.0 (Educational personal project; https://github.com/simidzija)'})
         status = response.status_code
@@ -149,13 +180,14 @@ class RequestHandler:
 
         return response
 
-
 class WikiURLExtractor():
-    def __init__(self, queue: deque[str], extracted: set[str]):
+    """Class for extracting urls from a Wikipedia page."""
+    def __init__(self, queue: deque[str], extracted: set[str]) -> None:
         self.queue = queue
         self.extracted = extracted
 
     def extract(self, html: str) -> list[str]:
+        """Extracts list of urls from given webpage."""
         soup = BeautifulSoup(html, 'html.parser')
 
         for tag in soup.find_all('a', href=True):

@@ -1,9 +1,16 @@
+"""
+Script to create BPE vocabulary. 
+
+Uses the functionality of bpe_vocab.py.
+"""
+
+# Standard library
 import sys
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from bpe_vocab import Vocab
 
 if __name__ == "__main__":

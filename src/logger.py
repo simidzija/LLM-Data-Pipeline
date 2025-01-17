@@ -1,16 +1,26 @@
-import sys
+"""
+Core logging functionality. 
+
+Contains:
+  - Logger: class for logging.
+"""
+
+# Standard library
 import logging
-from concurrent_log_handler import ConcurrentRotatingFileHandler
 from pathlib import Path
+import sys
+
+# Third-party
+from concurrent_log_handler import ConcurrentRotatingFileHandler
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
 
-
 class Logger:
+    "Class for logging."
     _loggers = {}
 
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         if name in Logger._loggers:
             print('logger found')
             self.logger = Logger._loggers[name]
@@ -41,5 +51,6 @@ class Logger:
         
         Logger._loggers[name] = self.logger
 
-    def info(self, msg: str, *args, **kwargs):
+    def info(self, msg: str, *args, **kwargs) -> None:
+        """Logs info message."""
         self.logger.info(msg, *args, **kwargs)

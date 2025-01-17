@@ -1,17 +1,34 @@
-import sys
+"""
+Core functionality for generating the BPE vocabulary. 
+
+This consitutes part 2/3 of the byte pair encoding (BPE) tokenization pipeline:
+  1. Create word frequency dict
+  2. Create vocab
+  3. Tokenize text
+
+Contains:
+  - Vocab: BPE vocabulary class.
+"""
+
+# Standard library
 import json
-from pathlib import Path
-from collections import defaultdict
+import sys
 import warnings
+from collections import defaultdict
+from pathlib import Path
+from typing import Optional
+
+# Third-party
 from tqdm import tqdm
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
+
 class Vocab:
-    """BPE vocabulary class"""
+    """BPE vocabulary class."""
     def __init__(self, freq_dict_path: str, vocab_path: str) -> None:
         self.freq_dict_path = freq_dict_path
         self.vocab_path = vocab_path
@@ -29,11 +46,12 @@ class Vocab:
         # Logger
         self.logger = Logger('vocab')
 
-    def __len__(self):
+    def __len__(self) -> int:
+        """Size of vocabulary."""
         return len(self.vocab)
 
     def increase_vocab(self, size: int) -> None:
-        """Increase vocab to given size by performing BPE merges."""
+        """Increase vocab to specified size by performing BPE merges."""
         if size < len(self):
             raise ValueError(f'target vocab size ({size}) cannot be less than initial vocab size ({len(self)})')
 
@@ -54,8 +72,9 @@ class Vocab:
         self.save_vocab()
         self.logger.info(f'Finished increasing vocab.\n')
 
-    def most_frequent_pair(self) -> tuple[str, str] | None:
-        """Return most frequent pair of adjacent tokens from token lists in self.freq_tokens"""
+    def most_frequent_pair(self) -> Optional[tuple[str, str]]:
+        """Return most frequent pair of adjacent tokens from token lists in 
+        self.freq_tokens"""
         # create pair frequency dict
         pair_freq = defaultdict(int)  # {pair1: freq1, etc.}
         for freq, tokens in self.freq_tokens.values():
@@ -72,7 +91,7 @@ class Vocab:
             return None
 
     def merge(self, pair: tuple[str, str]) -> None:
-        """Merge given pair of tokens in all token lists in self.freq_tokens"""
+        """Merge given pair of tokens in all token lists in self.freq_tokens."""
         for word in self.freq_tokens:
             freq, tokens = self.freq_tokens[word]
             if len(tokens) < 2:
@@ -96,10 +115,8 @@ class Vocab:
             # replace tokens with new_tokens
             self.freq_tokens[word] = (freq, new_tokens)
             
-    def save_vocab(self):
+    def save_vocab(self) -> None:
+        """Save vocab to file."""
         with open(self.vocab_path, 'w') as f:
             json.dump(list(self.vocab), f)
-
-
-
 

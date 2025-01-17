@@ -1,9 +1,16 @@
+"""
+Script to create BPE word frequency dictionary. 
+
+Uses the functionality of bpe_freqdict.py.
+"""
+
+# Standard library
 import sys
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from bpe_freqdict import create_freq_dict_from_jsonl
 
 if __name__ == "__main__":

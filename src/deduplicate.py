@@ -1,16 +1,37 @@
-import mmh3
-import sys
-import json
-from pathlib import Path
-from collections import defaultdict
+"""
+Core functionality to deduplicate texts. 
 
+Uses the MinHash and Locality Sensitive Hashing algorithms to perform 
+deduplication.
+
+Contains:
+  - Deduplicator: class for deduplication using MinHash and LSH algorithms.
+"""
+
+# Standard library
+import json
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+# Third-party
+import mmh3
+
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
 class Deduplicator:
-    def __init__(self, inpath, outpath, gram_len, signature_len, band_size, similarity_threshold):
+    """Class for deduplicating texts using MinHash and LSH algorithms."""
+    def __init__(self, 
+                 inpath: str, 
+                 outpath: str, 
+                 gram_len: int, 
+                 signature_len: int, 
+                 band_size: int, 
+                 similarity_threshold: float) -> None:
+
         # arguments
         self.inpath = inpath
         self.outpath = outpath
@@ -18,7 +39,9 @@ class Deduplicator:
         self.signature_len = signature_len
         self.band_size = band_size
         self.similarity_threshold = similarity_threshold
-        assert signature_len % band_size == 0, f"band_size ({band_size}) does not divide signature_len ({signature_len})"
+        if signature_len % band_size != 0:
+            raise ValueError(f"""band_size ({band_size}) does not divide 
+                             signature_len ({signature_len}))""")
         self.n_bands = signature_len // band_size
 
         # storage containers
@@ -35,7 +58,7 @@ class Deduplicator:
         # Logger
         self.logger = Logger('deduplicate')
 
-    def deduplicate(self):
+    def deduplicate(self) -> None:
         """Deduplicates infile and writes to outfile"""
         self.logger.info(f'Start deduplicating {self.inpath}')
 
@@ -70,9 +93,8 @@ class Deduplicator:
                 outfile.write('\n')
         self.logger.info(f'Finish deduplicating {self.inpath}\n')
         
-                    
-    def min_hash_jsonl(self):
-        """Creates min_hashes dict"""
+    def min_hash_jsonl(self) -> None:
+        """Creates min_hashes dict."""
         with open(self.inpath, 'r') as infile:
             total_lines = sum(1 for _ in infile)
             infile.seek(0)
@@ -100,7 +122,7 @@ class Deduplicator:
         return signature
 
 
-    def lsh_create_dicts(self):
+    def lsh_create_dicts(self) -> None:
         """Creates lsh_dicts list"""
         # loop over urls
         total_lines = len(self.min_hashes)
@@ -122,7 +144,7 @@ class Deduplicator:
                     # add to band dict
                     lsh_dict[hash_val].add((url, idx))
 
-    def lsh_get_duplicate_candidates(self):
+    def lsh_get_duplicate_candidates(self) -> None:
         """Create duplicate_candidates list"""
         total_dicts = len(self.lsh_dicts)
         for dict_num, lsh_dict in enumerate(self.lsh_dicts):
@@ -131,7 +153,7 @@ class Deduplicator:
                 if len(texts) > 1:
                     self.lsh_duplicate_candidates.append(texts)
 
-    def get_texts_to_remove(self):
+    def get_texts_to_remove(self) -> None:
         """Convert duplicate_candidates list to dict of texts to remove"""
         for texts in self.lsh_duplicate_candidates:
             texts_lst = list(texts)
@@ -148,8 +170,10 @@ class Deduplicator:
         for url, idx in self.texts_to_remove_set:
             self.texts_to_remove_dict[url].append(idx)
 
-    def are_duplicates(self, text1: tuple[str, int], text2: tuple[str, int]) -> bool:
-        """Returns True if text1 and text2 are determined to be duplicates"""
+    def are_duplicates(self, 
+                       text1: tuple[str, int], 
+                       text2: tuple[str, int]) -> bool:
+        """Determines whether text1 and text2 are duplicates."""
         url1, idx1 = text1
         url2, idx2 = text2
 
@@ -161,13 +185,9 @@ class Deduplicator:
         return jaccard_sim > self.similarity_threshold
 
     def jaccard(self, sig1: list[int], sig2: list[int]) -> float:
-        """Returns Jaccard similarity of signatures sig1 and sig2"""
+        """Returns Jaccard similarity of signatures sig1 and sig2."""
         n_same = sum([n1 == n2 for n1, n2 in zip(sig1, sig2)])
         n_total = len(sig1)
         return n_same / n_total
-
-
-    
-
 
         

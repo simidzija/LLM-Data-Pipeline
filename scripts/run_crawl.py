@@ -1,9 +1,16 @@
+"""
+Script to crawl and scrape Wikipedia. 
+
+Uses the functionality of crawl.py.
+"""
+
+# Standard library
 import sys
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 import crawl
 import utils
 
@@ -27,5 +34,5 @@ if __name__ == "__main__":
     crawler = crawl.Crawler(data_filepath, queue_filepath, visited_filepath, reset=False)
     crawler.crawl(max_pages=10)
 
-    
+
 

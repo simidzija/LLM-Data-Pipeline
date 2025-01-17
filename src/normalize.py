@@ -1,17 +1,29 @@
-import sys
-import json
-from pathlib import Path
-from multiprocessing import Pool, current_process
-import unicodedata
-import re
+"""
+Core functionality to normalize Wikipedia html. 
 
+Contains:
+  - Normalizer: class for normalizing Wikipedia text
+  - normalize_jsonl: function for normalizing text stored in jsonl file. 
+    Can utilize multiple processors.
+"""
+
+# Standard library
+import json
+import re
+import sys
+import unicodedata
+from multiprocessing import Pool, current_process
+from pathlib import Path
+from typing import Iterator, TextIO
+
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
 class Normalizer:
-    def __init__(self):
+    """Class for normalizing Wikipedia text."""
+    def __init__(self) -> None:
         # Handlers
         self.HANDLERS = [
             self.unicode_handler,
@@ -38,6 +50,7 @@ class Normalizer:
         return text
 
     def whitespace_handler(self, text: str) -> str:
+        """Normalize whitespace."""
         # normalize line endings to \n
         text = text.replace('\r\n', '\n').replace('\r', '\n')
 
@@ -60,6 +73,7 @@ class Normalizer:
         return text
 
     def quote_handler(self, text: str) -> str:
+        """Normalize quotes."""
         # replace double curly quotes with double straight quotes
         text = re.sub(r'[\u201C\u201D]', '\u0022', text)
 
@@ -69,6 +83,7 @@ class Normalizer:
         return text
     
     def dash_handler(self, text: str) -> str:
+        """Normalize dashes."""
         # replace minus with hyphen-minus
         text = re.sub(r'\u2212', '\u002D', text)
 
@@ -78,17 +93,26 @@ class Normalizer:
 
 # Multiprocessing functions
 
-def get_iterable(file, total_lines, len_cutoff):
+def get_iterable(file: TextIO, 
+                 total_lines: int, 
+                 len_cutoff: int) -> Iterator[int, str, int, int]:
+    """Generator of worker() arguments."""
     for page_num, line in enumerate(file, 1):
         yield (page_num, line, total_lines, len_cutoff)
 
-def worker_init():
+def worker_init() -> None:
+    """Initializes worker."""
     global normalizer
     normalizer = Normalizer()
     process = current_process()
     print(f'Initialized {process.name}')
 
-def worker(page_num: int, line: str, total_lines: int, len_cutoff: int):
+def worker(page_num: int, 
+           line: str, 
+           total_lines: int, 
+           len_cutoff: int) -> tuple[str, list[str]]:
+    """Normalizes text in jsonl entry given by line."""
+
     # read from line
     entry = json.loads(line)
     url = entry['url']
@@ -110,8 +134,12 @@ def worker(page_num: int, line: str, total_lines: int, len_cutoff: int):
 
 # Main entry points
 
-def normalize_jsonl(inpath_list: list[str] | str, outpath: str, processes: int, len_cutoff: int=-1):
+def normalize_jsonl(inpath_list: list[str] | str, 
+                    outpath: str, 
+                    processes: int, 
+                    len_cutoff: int=-1) -> None:
     """Normalize text stored in .jsonl file"""
+
     normalizer = Normalizer()
     normalizer.logger.info(f"Started normalizing {inpath_list}")
 

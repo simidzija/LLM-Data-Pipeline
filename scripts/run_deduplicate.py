@@ -1,9 +1,16 @@
+"""
+Script to deduplicate text. 
+
+Uses the functionality of deduplicate.py.
+"""
+
+# Standard library
 import sys
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from deduplicate import Deduplicator
 
 if __name__ == "__main__":

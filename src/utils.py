@@ -1,23 +1,42 @@
-import sys
-import yaml
+"""
+Utility files.
+
+Contains functions:
+  - load_yaml: Loads contents of yaml file.
+  - load_json: Loads contents of json file.
+  - get_jsonl_len_stats: Return stats dict about jsonl file.
+  - plot_len_frequencies: Plot text length vs frequency for text corpus.
+  - get_texts: Given a condition, return texts which satisfy this condition.
+"""
+
+# Standard library
 import json
-from pathlib import Path
-import numpy as np
+import sys
 from collections import defaultdict
+from pathlib import Path
+from typing import Any, Callable
+
+# Third-party
 import matplotlib.pyplot as plt
+import numpy as np
+import yaml
+
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
 
-def load_yaml(path):
+
+def load_yaml(path: str) -> Any:
+    """Loads contents of yaml file."""
     with open(path, 'r') as file:
         return yaml.safe_load(file)
     
-def load_json(path):
+def load_json(path: str) -> Any:
+    """Loads contents of json file."""
     with open(path, 'r') as file:
         return json.load(file)
 
-def get_jsonl_len_stats(path: str) -> tuple[float]:
+def get_jsonl_len_stats(path: str) -> dict[str, float]:
     """
     Return stats dict about jsonl file, containing:
       - mean number of paragraphs per article
@@ -44,8 +63,8 @@ def get_jsonl_len_stats(path: str) -> tuple[float]:
 
     return stats
 
-def plot_len_frequencies(path: str, plot_title):
-    """Plot text len vs freq for data in path"""
+def plot_len_frequencies(path: str, plot_title) -> None:
+    """Plot text length vs frequency for file given by specified path."""
     with open(path, 'r') as file:
         len_counter = defaultdict(int)
         for line in file:
@@ -66,8 +85,8 @@ def plot_len_frequencies(path: str, plot_title):
     plt.show()
 
 
-def get_texts(path: str, condition) -> dict[str, list[int]]:
-    """Get texts which satisfy condition"""
+def get_texts(path: str, condition: Callable) -> dict[str, list[int]]:
+    """Return texts which satisfy condition."""
     results = defaultdict(list)
     with open(path, 'r') as file:
         for line in file:
@@ -81,19 +100,23 @@ def get_texts(path: str, condition) -> dict[str, list[int]]:
     return results
 
 
-
-
-
 if __name__ == '__main__':
+
+    ##################  Plot text length distribution  ######################
+
     inpath = str(ROOT/'data'/'normalize_data.jsonl')
 
     title = 'Length of text in normalize_data.jsonl after implementing cutoff'
     plot_len_frequencies(inpath, title)
     
+    ##################  Total number of paragraphs  ######################
+
     # condition = lambda text: len(text) > 0
     # results = get_texts(inpath, condition)
     # count = sum([len(idxs) for idxs in results.values()])
     # print(f'total pars = {count}')
+
+    ##################  Number of paragraphs with len > 50  ###################
 
     # condition = lambda text: len(text) > 50
     # results = get_texts(inpath, condition)

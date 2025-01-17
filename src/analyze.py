@@ -1,20 +1,33 @@
-import sys
-import json
-from pathlib import Path
-from multiprocessing import Pool, current_process
-from collections import Counter
+"""
+Core functionality to analyze character frequency in text. 
 
+Contains:
+  - Analyzer: class for analyzing character frequency in text.
+  - analyze_jsonl: function for analyzing character frequencies of text stored
+    in jsonl file. Can utilize multiple processors.
+"""
+
+# Standard library
+import json
+import sys
+from collections import Counter
+from multiprocessing import Pool, current_process
+from pathlib import Path
+from typing import Iterator
+
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
 class Analyzer:
+    """Class for analyzing character frequency in text."""
     def __init__(self):
         self.logger = Logger('analyze')
 
-    def analyze(self, text: str, chars: list[str] | tuple[str] | set[str]) -> Counter:
-        """Analyze text, returning character Counter."""
+    def analyze(self, text: str, 
+                chars: list[str] | tuple[str, ...] | set[str]) -> Counter:
+        """Analyze text, return character Counter."""
         chars = set(chars)
         counter = Counter(c for c in text if c in chars)
         return counter
@@ -22,17 +35,24 @@ class Analyzer:
 
 # Multiprocessing functions
 
-def get_iterable(file, total_lines, chars):
+def get_iterable(file, total_lines: int, 
+                 chars: list[str]) -> Iterator[int, str, int, list[str]]:
+    """Generator of worker() arguments."""
     for page_num, line in enumerate(file, 1):
         yield (page_num, line, total_lines, chars)
 
-def worker_init():
+def worker_init() -> None:
+    """Initializes worker."""
     global analyzer
     analyzer = Analyzer()
     process = current_process()
     print(f'Initialized {process.name}')
 
-def worker(page_num: int, line: str, total_lines: int, chars: list[str]) -> Counter:
+def worker(page_num: int, 
+           line: str, 
+           total_lines: int, 
+           chars: list[str]) -> Counter:
+    """Analyzes text in jsonl entry given by line."""
     # read from line
     entry = json.loads(line)
     url = entry['url']
@@ -52,7 +72,9 @@ def worker(page_num: int, line: str, total_lines: int, chars: list[str]) -> Coun
 
 # Main entry points
 
-def analyze_jsonl(inpath_list: list[str] | str, chars: list[str], processes: int) -> Counter:
+def analyze_jsonl(inpath_list: list[str] | str, 
+                  chars: list[str], 
+                  processes: int) -> Counter:
     """Analyze text stored in .jsonl file(s), returning Counter for chars."""
     analyzer = Analyzer()
     analyzer.logger.info(f"Started analyzing {inpath_list} for {chars}")

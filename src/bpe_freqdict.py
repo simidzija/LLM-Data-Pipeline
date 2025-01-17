@@ -1,37 +1,58 @@
-import sys
-import json
-from pathlib import Path
-from multiprocessing import Pool, current_process
-from collections import Counter
+"""
+Core functionality for creating the BPE word frequency dictionary. 
 
+This consitutes part 1/3 of the byte pair encoding (BPE) tokenization pipeline:
+  1. Create word frequency dict
+  2. Create vocab
+  3. Tokenize text
+
+Contains:
+  - FreqDictCreator: class for creating BPE word frequency dictionary.
+  - create_freq_dict_from_jsonl: function for creating word frequency dict from
+    text stored in jsonl file. Can utilize multiple processors.
+"""
+
+# Standard library
+import json
+import sys
+from collections import Counter
+from multiprocessing import Pool, current_process
+from pathlib import Path
+from typing import Iterator
+
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
+
 class FreqDictCreator:
-    def __init__(self):
+    """Class for creating BPE word frequency dictionary."""
+    def __init__(self) -> None:
         # Logger 
         self.logger = Logger('freqdict')
 
-    def create_freq_dict(self, text: str) -> Counter:
+    def create_freq_dict(self, text: str) -> Counter[str, int]:
+        """Creates word frequency dictionary from text."""
         return Counter(text.split(sep=" "))
-
 
 
 # Multiprocessing functions
 
-def get_iterable(file, total_lines):
+def get_iterable(file, total_lines: int) -> Iterator[int, str, int]:
+    """Generator of worker() arguments."""
     for page_num, line in enumerate(file, 1):
         yield (page_num, line, total_lines)
 
-def worker_init():
+def worker_init() -> None:
+    """Initializes worker."""
     global freq_dict_creator
     freq_dict_creator = FreqDictCreator()
     process = current_process()
     print(f'Initialized {process.name}')
 
-def worker(page_num: int, line: str, total_lines: int):
+def worker(page_num: int, line: str, total_lines: int) -> Counter[str, int]:
+    """Creates BPE word freq dict for texts in jsonl entry given by line."""
     # read from line
     entry = json.loads(line)
     url = entry['url']
@@ -52,7 +73,9 @@ def worker(page_num: int, line: str, total_lines: int):
 
 # Main entry point
 
-def create_freq_dict_from_jsonl(corpus_path: str, freq_dict_path: str, processes: int):
+def create_freq_dict_from_jsonl(corpus_path: str, 
+                                freq_dict_path: str, 
+                                processes: int) -> None:
     """Create word frequency dict for text in jsonl file"""
 
     freq_dict_creator = FreqDictCreator()

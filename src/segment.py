@@ -1,18 +1,36 @@
-"""Good sentence segmentation requires a lot of heuristics, to handle abbrevitions properly, etc. I was too lazy to code up all of these heuristics, so I decided to use an external library (spacy) to do the sentence segmentation for me. I leave the implementation of a sentence segmenter from scratch as another project."""
+"""
+Core functionality to segment text into sentences. 
 
+Accurate sentence segmentation requires implementing many heuristics, e.g. to 
+handle abbrevitions properly. To avoid getting too sidetracked with this small 
+piece of the data preparation pipeline, I decided to use an external library 
+(spacy) to perform the sentence segmentation. I leave the implementation of a 
+sentence segmenter from scratch for a future project.
 
-import sys
+Contains:
+  - Segmenter: class for segmenting text into sentences.
+  - segment_jsonl: function for segmenting text stored in jsonl file. 
+    Can utilize multiple processors.
+"""
+
+# Standard library
 import json
-from pathlib import Path
+import sys
 from multiprocessing import Pool, current_process
+from pathlib import Path
+from typing import Iterator, TextIO
+
+# Third-party
 import spacy
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
+
 class Segmenter:
+    """Class for segmenting text into sentences."""
     def __init__(self):
         # spacy NLP object
         self.nlp = spacy.load("en_core_web_sm")
@@ -26,17 +44,25 @@ class Segmenter:
 
 # Multiprocessing functions
 
-def get_iterable(file, total_lines, omit_duplicates):
+def get_iterable(file: TextIO, 
+                 total_lines: int, 
+                 omit_duplicates: bool) -> Iterator[int, str, int, bool]:
+    """Generator of worker() arguments."""
     for page_num, line in enumerate(file, 1):
         yield (page_num, line, total_lines, omit_duplicates)
 
-def worker_init():
+def worker_init() -> None:
+    """Initializes worker."""
     global segmenter
     segmenter = Segmenter()
     process = current_process()
     print(f'Initialized {process.name}')
 
-def worker(page_num: int, line: str, total_lines: int, omit_duplicates: bool):
+def worker(page_num: int, 
+           line: str, 
+           total_lines: int, 
+           omit_duplicates: bool) -> tuple[str, list[list[str]]]:
+    """Segments texts in jsonl entry given by line."""
     # read from line
     entry = json.loads(line)
     url = entry['url']
@@ -55,11 +81,14 @@ def worker(page_num: int, line: str, total_lines: int, omit_duplicates: bool):
     return url, segmented_text_list
 
 
-
 # Main entry point
 
-def segment_jsonl(inpath: str, outpath: str, processes: int, omit_duplicates: bool=True):
+def segment_jsonl(inpath: str, 
+                  outpath: str, 
+                  processes: int, 
+                  omit_duplicates: bool=True) -> None:
     """Segment text stored in .jsonl file into sentences"""
+
     segmenter = Segmenter()
     segmenter.logger.info(f"Started segmenting {inpath}")
 

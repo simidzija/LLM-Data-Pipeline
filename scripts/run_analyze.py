@@ -1,12 +1,21 @@
+"""
+Script to analyze character frequencies in Wikipedia text. 
+
+Uses the functionality of analyze.py.
+"""
+
+# Standard library
 import sys
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from analyze import analyze_jsonl
 
 if __name__ == "__main__":
+    ### Determine frequencies of different types of dash and quote characters
+
     inpath = str(ROOT/'data/normalize_data.jsonl')
     chars = ["\u0022",
              "\u0027", 
@@ -43,7 +52,7 @@ if __name__ == "__main__":
     # − = U+2212  -     5920 times
 
 
-    #####################  Results - Before Normalization  ####################
+    #####################  Results - After Normalization  ####################
 
     # " = U+22    -  1591857 times
     # ' = U+27    -  1186833 times

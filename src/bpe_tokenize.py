@@ -1,14 +1,32 @@
-import sys
-import json
-from pathlib import Path
-from multiprocessing import Pool, current_process
+"""
+Core functionality for BPE tokenization. 
 
+This consitutes part 3/3 of the byte pair encoding (BPE) tokenization pipeline:
+  1. Create word frequency dict
+  2. Create vocab
+  3. Tokenize text
+
+Contains:
+  - Tokenizer: class for BPE tokenization.
+  - tokenize_jsonl: function for BPE tokenization of text stored in jsonl file. 
+    Can utilize multiple processors.
+"""
+
+# Standard library
+import json
+import sys
+from multiprocessing import Pool, current_process
+from pathlib import Path
+from typing import Iterator
+
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from logger import Logger
 
+
 class Tokenizer:
+    """Class for BPE tokenization."""
     def __init__(self, vocab_path: str) -> None:
         self.vocab_path = vocab_path
         self.load_vocab()
@@ -17,6 +35,7 @@ class Tokenizer:
         self.logger = Logger('tokenize')
 
     def tokenize(self, text: str) -> list[str]:
+        """Tokenize text."""
         # tokenized text list
         tokenized = []
 
@@ -42,14 +61,15 @@ class Tokenizer:
                 
         return tokenized
 
-    def load_vocab(self):
-        """Loads vocab from self.vocab_path into set self.vocab"""
+    def load_vocab(self) -> None:
+        """Loads vocab from file at self.vocab_path into set self.vocab."""
         with open(self.vocab_path, 'r') as f:
             self.vocab = set(json.load(f))
 
 # Multiprocessing functions
 
 def worker_init(vocab_path: str) -> None:
+    """Initializes worker."""
     # Print current process
     process = current_process()
     print(f'Initialized {process.name}')
@@ -58,11 +78,15 @@ def worker_init(vocab_path: str) -> None:
     global tokenizer
     tokenizer = Tokenizer(vocab_path)
     
-def get_iterable(file, total_lines):
+def get_iterable(file, total_lines: int) -> Iterator[int, str, int]:
+    """Generator of worker() arguments."""
     for page_num, line in enumerate(file, 1):
         yield (page_num, line, total_lines)
 
-def worker(page_num: int, line: str, total_lines: int):
+def worker(page_num: int, 
+           line: str, 
+           total_lines: int) -> tuple[str, list[list[list[str]]]]:
+    """Tokenizes texts in jsonl entry given by line."""    
     # read from line
     entry = json.loads(line)
     url = entry['url']
@@ -81,8 +105,12 @@ def worker(page_num: int, line: str, total_lines: int):
 
 # Main entry point
 
-def tokenize_jsonl(inpath: str, outpath: str, vocab_path, processes: int) -> None:
+def tokenize_jsonl(inpath: str, 
+                   outpath: str, 
+                   vocab_path, 
+                   processes: int) -> None:
     """Tokenize text stored in .jsonl file."""
+
     tokenizer = Tokenizer(vocab_path)
     tokenizer.logger.info(f"Started tokenizing {inpath}")
 

@@ -1,10 +1,16 @@
+"""
+Script to parse Wikipedia. 
+
+Uses the functionality of parse.py.
+"""
+
+# Standard library
 import sys
-import json
 from pathlib import Path
 
+# Local
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(ROOT/'src'))
-
 from parse import parse_jsonl
 
 if __name__ == "__main__":
@@ -21,14 +27,3 @@ if __name__ == "__main__":
 
     parse_jsonl(raw_path, parsed_path, processes=10)
     
-    
-    ############################  parse single html  ###########################
-
-    # with open('/Users/petar/Documents/llmdata/data/crawl_data_5.jsonl', 'r') as file:
-    #     for _ in range(9):
-    #         line = json.loads(next(iter(file)))
-    #     url = line['url']
-    #     html = line['text']
-
-    # parser = parse.Parser()
-    # parser.parse(html)
