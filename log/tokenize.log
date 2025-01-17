@@ -1,0 +1,43 @@
+2025-01-17 14:49:19,922 - INFO - Started tokenizing /Users/petar/Documents/llmdata/data/segment_data_5.jsonl
+2025-01-17 14:49:47,854 - INFO - Started tokenizing /Users/petar/Documents/llmdata/data/segment_data_5.jsonl
+2025-01-17 14:49:47,926 - INFO - Tokenizing page 1 / 40: https://en.wikipedia.org/wiki/Michel_Weber
+2025-01-17 14:49:47,931 - INFO - Tokenizing page 2 / 40: https://en.wikipedia.org/wiki/Joseph_Levine_(philosopher)
+2025-01-17 14:49:47,932 - INFO - Tokenizing page 3 / 40: https://en.wikipedia.org/wiki/Mind_(journal)
+2025-01-17 14:49:47,932 - INFO - Tokenizing page 4 / 40: https://en.wikipedia.org/wiki/Philosophy_and_the_Mirror_of_Nature
+2025-01-17 14:49:47,933 - INFO - Tokenizing page 5 / 40: https://en.wikipedia.org/wiki/Herbert_Feigl
+2025-01-17 14:49:47,933 - INFO - Tokenizing page 6 / 40: https://en.wikipedia.org/wiki/Tim_Crane
+2025-01-17 14:49:47,934 - INFO - Tokenizing page 7 / 40: https://en.wikipedia.org/wiki/Celia_Green
+2025-01-17 14:49:47,934 - INFO - Tokenizing page 8 / 40: https://en.wikipedia.org/wiki/Tharpa_Publications
+2025-01-17 14:49:47,936 - INFO - Tokenizing page 9 / 40: https://en.wikipedia.org/wiki/Mill%27s_Methods
+2025-01-17 14:49:47,936 - INFO - Tokenizing page 10 / 40: https://en.wikipedia.org/wiki/Construct_(philosophy)
+2025-01-17 14:49:47,937 - INFO - Tokenizing page 11 / 40: https://en.wikipedia.org/wiki/Correlation_function
+2025-01-17 14:49:47,937 - INFO - Tokenizing page 12 / 40: https://en.wikipedia.org/wiki/Creative_synthesis
+2025-01-17 14:49:47,938 - INFO - Tokenizing page 13 / 40: https://en.wikipedia.org/wiki/Functional_contextualism
+2025-01-17 14:49:47,938 - INFO - Tokenizing page 14 / 40: https://en.wikipedia.org/wiki/Alternative_hypothesis
+2025-01-17 14:49:47,938 - INFO - Tokenizing page 15 / 40: https://en.wikipedia.org/wiki/Null_hypothesis
+2025-01-17 14:49:47,939 - INFO - Tokenizing page 16 / 40: https://en.wikipedia.org/wiki/Ignoramus_et_ignorabimus
+2025-01-17 14:49:47,939 - INFO - Tokenizing page 17 / 40: https://en.wikipedia.org/wiki/Intertheoretic_reduction
+2025-01-17 14:49:47,939 - INFO - Tokenizing page 18 / 40: https://en.wikipedia.org/wiki/Evidence-based_practice
+2025-01-17 14:49:47,940 - INFO - Tokenizing page 19 / 40: https://en.wikipedia.org/wiki/Scientific_pluralism
+2025-01-17 14:49:47,940 - INFO - Tokenizing page 20 / 40: https://en.wikipedia.org/wiki/Testability
+2025-01-17 14:49:47,941 - INFO - Tokenizing page 21 / 40: https://en.wikipedia.org/wiki/Theory_choice
+2025-01-17 14:49:47,941 - INFO - Tokenizing page 22 / 40: https://en.wikipedia.org/wiki/Variable_and_attribute_(research)
+2025-01-17 14:49:47,941 - INFO - Tokenizing page 23 / 40: https://en.wikipedia.org/wiki/Control_variable
+2025-01-17 14:49:47,942 - INFO - Tokenizing page 24 / 40: https://en.wikipedia.org/wiki/Constructive_empiricism
+2025-01-17 14:49:47,942 - INFO - Tokenizing page 25 / 40: https://en.wikipedia.org/wiki/Constructive_realism
+2025-01-17 14:49:47,942 - INFO - Tokenizing page 27 / 40: https://en.wikipedia.org/wiki/Model-dependent_realism
+2025-01-17 14:49:47,942 - INFO - Tokenizing page 26 / 40: https://en.wikipedia.org/wiki/Inductionism
+2025-01-17 14:49:47,942 - INFO - Tokenizing page 28 / 40: https://en.wikipedia.org/wiki/Scientific_formalism
+2025-01-17 14:49:47,943 - INFO - Tokenizing page 29 / 40: https://en.wikipedia.org/wiki/Descriptive_research
+2025-01-17 14:49:47,943 - INFO - Tokenizing page 30 / 40: https://en.wikipedia.org/wiki/Hard_and_soft_science
+2025-01-17 14:49:47,944 - INFO - Tokenizing page 32 / 40: https://en.wikipedia.org/wiki/Normative_science
+2025-01-17 14:49:47,944 - INFO - Tokenizing page 31 / 40: https://en.wikipedia.org/wiki/Non-science
+2025-01-17 14:49:47,944 - INFO - Tokenizing page 34 / 40: https://en.wikipedia.org/wiki/Questionable_cause
+2025-01-17 14:49:47,944 - INFO - Tokenizing page 33 / 40: https://en.wikipedia.org/wiki/Protoscience
+2025-01-17 14:49:47,945 - INFO - Tokenizing page 35 / 40: https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9
+2025-01-17 14:49:47,945 - INFO - Tokenizing page 36 / 40: https://en.wikipedia.org/wiki/Rudolf_Steiner
+2025-01-17 14:49:47,945 - INFO - Tokenizing page 38 / 40: https://en.wikipedia.org/wiki/Wilhelm_Windelband
+2025-01-17 14:49:47,945 - INFO - Tokenizing page 37 / 40: https://en.wikipedia.org/wiki/Karl_Pearson
+2025-01-17 14:49:47,946 - INFO - Tokenizing page 39 / 40: https://en.wikipedia.org/wiki/Michael_Polanyi
+2025-01-17 14:49:47,946 - INFO - Tokenizing page 40 / 40: https://en.wikipedia.org/wiki/Imre_Lakatos
+2025-01-17 14:49:47,984 - INFO - Finished tokenizing /Users/petar/Documents/llmdata/data/segment_data_5.jsonl
