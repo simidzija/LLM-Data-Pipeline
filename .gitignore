@@ -3,6 +3,6 @@
 __pycache__
 data/*
 !data/*_5.json*
-!data/*.pdf
+!data/*.png
 src/__pycache__
 log/.__*.lock
