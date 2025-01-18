@@ -75,7 +75,7 @@ def plot_len_frequencies(path: str, plot_title) -> None:
                 len_counter[len_text] += 1
 
     plt.scatter(list(len_counter.keys()), list(len_counter.values()), s=5)
-    plt.title = plot_title
+    plt.title(plot_title)
     plt.xlabel('text len')
     plt.ylabel('frequency')
     plt.xscale('log')
@@ -104,10 +104,13 @@ if __name__ == '__main__':
 
     ##################  Plot text length distribution  ######################
 
-    inpath = str(ROOT/'data'/'normalize_data.jsonl')
-
-    title = 'Length of text in normalize_data.jsonl after implementing cutoff'
+    inpath = str(ROOT/'data'/'normalize_data_pre_cutoff.jsonl')
+    title = 'Length of text before implementing cutoff'
     plot_len_frequencies(inpath, title)
+
+    # inpath = str(ROOT/'data'/'normalize_data.jsonl')
+    # title = 'Length of text after implementing cutoff'
+    # plot_len_frequencies(inpath, title)
     
     ##################  Total number of paragraphs  ######################
 
