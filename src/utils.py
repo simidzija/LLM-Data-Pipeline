@@ -104,25 +104,25 @@ if __name__ == '__main__':
 
     ##################  Plot text length distribution  ######################
 
-    # inpath = str(ROOT/'data'/'normalize_data_pre_cutoff.jsonl')
+    inpath = str(ROOT/'data'/'normalize_data_pre_cutoff.jsonl')
     # title = 'Length of text before implementing cutoff'
     # plot_len_frequencies(inpath, title)
 
-    inpath = str(ROOT/'data'/'normalize_data.jsonl')
-    title = 'Length of text after implementing cutoff'
-    plot_len_frequencies(inpath, title)
+    # inpath = str(ROOT/'data'/'normalize_data.jsonl')
+    # title = 'Length of text after implementing cutoff'
+    # plot_len_frequencies(inpath, title)
     
     ##################  Total number of paragraphs  ######################
 
-    # condition = lambda text: len(text) > 0
-    # results = get_texts(inpath, condition)
-    # count = sum([len(idxs) for idxs in results.values()])
-    # print(f'total pars = {count}')
+    condition = lambda text: len(text) > 0
+    results = get_texts(inpath, condition)
+    count = sum([len(idxs) for idxs in results.values()])
+    print(f'total pars = {count}')
 
     ##################  Number of paragraphs with len > 50  ###################
 
-    # condition = lambda text: len(text) > 50
-    # results = get_texts(inpath, condition)
-    # count = sum([len(idxs) for idxs in results.values()])
-    # print(f'pars with len > 50 = {count}')
+    condition = lambda text: len(text) > 50
+    results = get_texts(inpath, condition)
+    count = sum([len(idxs) for idxs in results.values()])
+    print(f'pars with len > 50 = {count}')
     
