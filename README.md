@@ -151,7 +151,8 @@ This is done as follows:
 
 Each iteration of this algorithm requires passing through the entire corpus, so it is fairly slow for a large corpus.
 A simple optimization to improve efficiency is to use a word frequency dictionary constructed from the corpus, instead of the corpus itself, when computing pair frequencies.
-However even with this optimization the algorithm is very time consuming: for our ~1GB corpus it takes several seconds to add a single new token to the vocabulary.
+However even with this optimization the algorithm is very time consuming: for our ~1GB corpus it takes ~7 seconds to add a single new token to the vocabulary.
+I have also tried improving this runtime using multiprocessing (see the [`multiprocessing-vocab`](../../tree/feature/multiprocessing-vocab) git branch), but due to the inherently serial nature of byte pair encoding this does not provide significant improvements, even with 10 cores.
 
 ### 2. BPE tokenization
 
