@@ -16,7 +16,7 @@ The pipeline involves the following steps:
 
 ## 1. Crawling and Scraping
 The first step to obtaining LLM training data is to scrape text from the internet by crawling through webpages.
-I impemented a crawler and scraper for Wikipedia.
+I implemented a crawler and scraper for Wikipedia.
 The crawler starts with the seed urls located in [`config.yaml`](config/config.yaml). 
 I used a single seed url, [List of Academic Fields](https://en.wikipedia.org/wiki/List_of_academic_fields), starting from which my program crawled and scraped 51,445 English language articles, totalling ~12 GB of unprocessed HTML data.
 
@@ -62,7 +62,7 @@ Before this step the lengths of individual pieces of text in my dataset are dist
 ![Initial length distribution](data/text_len_before_cutoff.png)
 
 The distribution of texts with more than 50 characters follows a nice Gaussian looking distribution (in log space, and with a tail).
-However there is significant noise in the distribution of texts whorter than 50 characters. 
+However there is significant noise in the distribution of texts shorter than 50 characters. 
 Inspection of a few of the article sections contributing to this noise indicates that they typically correspond to typos, stub articles / sections, or other undesired pieces of text.
 Therefore I remove all text which contains fewer than 50 characters.
 This reduces the number of article sections by ~0.02%, from 303,845 to 295,429.
