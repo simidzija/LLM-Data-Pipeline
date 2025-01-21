@@ -7,16 +7,18 @@ This consitutes part 2/3 of the byte pair encoding (BPE) tokenization pipeline:
   3. Tokenize text
 
 Contains:
-  - Vocab: BPE vocabulary class.
+  - increase_vocab: increases vocabulary to specified size.
 """
 
 # Standard library
 import json
 import sys
 import warnings
-from collections import defaultdict
+from collections import Counter
+from itertools import islice
+from multiprocessing import Pool
 from pathlib import Path
-from typing import Optional
+from time import perf_counter
 
 # Third-party
 from tqdm import tqdm
@@ -27,96 +29,139 @@ sys.path.append(str(ROOT/'src'))
 from logger import Logger
 
 
-class Vocab:
-    """BPE vocabulary class."""
-    def __init__(self, freq_dict_path: str, vocab_path: str) -> None:
-        self.freq_dict_path = freq_dict_path
-        self.vocab_path = vocab_path
+def create_freq_dict(freq_dict_path: str) -> dict[str, int]:
+    """Create word: freq dict from file."""
+    with open(freq_dict_path, 'r') as f:
+        freq_dict = json.load(f)
 
-        # initialize vocab and create freq_tokens dict
-        self.freq_tokens = {}  # {word1: (freq1, tokens1), etc.}
-        self.vocab = set(' ')  # since we split at spaces
-        with open(freq_dict_path, 'r') as f:
-            freq_dict: dict[str, int] = json.load(f)
-            for word, freq in freq_dict.items():
-                tokens = [c for c in word]
-                self.vocab.update(tokens)
-                self.freq_tokens[word] = (freq, tokens)
+    return freq_dict
 
-        # Logger
-        self.logger = Logger('vocab')
+def init_vocab(freq_dict: dict[str, int]) -> set[str]:
+    """Initialize vocabulary."""
+    vocab = set(' ')
+    for word in freq_dict:
+        vocab.update(c for c in word)
 
-    def __len__(self) -> int:
-        """Size of vocabulary."""
-        return len(self.vocab)
+    return vocab
 
-    def increase_vocab(self, size: int) -> None:
-        """Increase vocab to specified size by performing BPE merges."""
-        if size < len(self):
-            raise ValueError(f'target vocab size ({size}) cannot be less than initial vocab size ({len(self)})')
+def chunk_freq_dict(freq_dict: dict[str, int], 
+                    n_chunks: int) -> dict[str, tuple[int, list[str]]]:
+    """Split word: frequency dict into several word: (freq, tokens) dicts."""
+    chunks = []
+    k, m = divmod(len(freq_dict), n_chunks)
+    for i in range(0, n_chunks):
+        # create chunk
+        start = i * k + min(i, m)
+        end = (i + 1) * k + min(i, m)
+        chunk = {}
+        for word, freq in islice(freq_dict.items(), start, end):
+            tokens = [c for c in word]
+            chunk[word] = (freq, tokens)
 
-        self.logger.info(f'Increasing vocab size from {len(self)} to {size}')
+        # add to chunks
+        chunks.append(chunk)
 
-        for s in tqdm(range(len(self.vocab), size)):
-            pair = self.most_frequent_pair()
-            if pair is None:
+    return chunks
+
+def get_counter(chunk: dict[str, tuple[int, list[str]]]) -> Counter[tuple[str, str], int]:
+    """Get pair: freq counter from word: (freq, tokens) dict."""
+    counter = Counter()
+    for freq, tokens in chunk.values():
+        subcounter = Counter(zip(tokens[:-1], tokens[1:]))
+        counter.update({k: freq * v for k, v in subcounter.items()})
+    
+    return counter
+
+def merge(pair: tuple[str, str],
+          chunk: dict[str, tuple[int, list[str]]]) -> dict[str, tuple[int, list[str]]]:
+    """Merge pair of tokens in word: (freq, tokens) dict."""
+    for word in chunk:
+        freq, tokens = chunk[word]
+        if len(tokens) < 2:
+            continue
+
+        # merge all occurences of pair in tokens, creating new_tokens list
+        new_tokens = []
+        i = 0
+        while i < len(tokens):
+            t1 = tokens[i]
+            t2 = tokens[i+1] if i+1 < len(tokens) else None
+            # if t1 and t2 form desired pair, append pair to new_tokens
+            if (t1, t2) == pair:
+                new_tokens.append(''.join(pair))
+                i += 2
+            # otherwise append t1 to new_tokens
+            else:
+                new_tokens.append(t1)
+                i += 1
+
+        # replace tokens with new_tokens
+        chunk[word] = (freq, new_tokens)
+    
+    return chunk
+
+def save_vocab(vocab: set[str], vocab_path: str) -> None:
+    """Save vocab to file."""
+    with open(vocab_path, 'w') as f:
+        json.dump(list(vocab), f)
+
+
+
+# Main entry point
+def increase_vocab(freq_dict_path: str,
+                   vocab_path: str,
+                   size: int,
+                   processes: int=10) -> None:
+    """Increase vocabulary to specified size."""
+
+    # Logger
+    logger = Logger('vocab')
+
+    # Create freq dict
+    freq_dict = create_freq_dict(freq_dict_path)
+
+    # Initialize vocab
+    vocab = init_vocab(freq_dict)
+
+    # Split freq_dict into chunks
+    chunks = chunk_freq_dict(freq_dict, processes)
+
+    # BPE loop
+    logger.info(f'Increasing vocab size from {len(vocab)} to {size}')
+    with Pool(processes=processes) as pool:
+        for s in tqdm(range(len(vocab), size)):
+
+            # Build pair: freq dict
+            start = perf_counter()
+            counter = Counter()
+            for c in pool.map(get_counter, chunks):
+                counter.update(c)
+            end = perf_counter()
+            print(f'Build dict: {end - start} s')
+                
+            # Break if counter is empty
+            if not counter:
                 msg = f'Vocab size reached maximal value of {s}, which is smaller than target value {size}.\n'
                 warnings.warn(msg)
-                self.logger.info(msg)
-                break
-            joined = ''.join(pair)
-            self.vocab.add(joined)
-            self.merge(pair)
-            self.logger.info(f'Vocab increased to size {s:6d} (target {size}): Added {joined} = {pair[0]} + {pair[1]}.')
+                logger.info(msg)
+                break 
 
-        self.save_vocab()
-        self.logger.info(f'Finished increasing vocab.\n')
+            # Find most frequent pair
+            pair = max(counter, key=counter.get)
 
-    def most_frequent_pair(self) -> Optional[tuple[str, str]]:
-        """Return most frequent pair of adjacent tokens from token lists in 
-        self.freq_tokens"""
-        # create pair frequency dict
-        pair_freq = defaultdict(int)  # {pair1: freq1, etc.}
-        for freq, tokens in self.freq_tokens.values():
-            if len(tokens) < 2:
-                continue
-            for t1, t2 in zip(tokens[:-1], tokens[1:]):
-                pair_freq[(t1, t2)] += freq
-            
-        # return most frequent pair
-        if pair_freq:
-            pair = max(pair_freq, key=pair_freq.get)
-            return pair
-        else:
-            return None
+            # Merge
+            start = perf_counter()
+            iterable = [(pair, chunk) for chunk in chunks]
+            chunks = pool.starmap(merge, iterable)
+            end = perf_counter()
+            print(f'Merge pair: {end - start} s')
 
-    def merge(self, pair: tuple[str, str]) -> None:
-        """Merge given pair of tokens in all token lists in self.freq_tokens."""
-        for word in self.freq_tokens:
-            freq, tokens = self.freq_tokens[word]
-            if len(tokens) < 2:
-                continue
+            # Log
+            logger.info(f"Vocab increased to size {s:6d} (target {size}): Added {''.join(pair)} = {pair[0]} + {pair[1]}.")
 
-            # merge all occurences of pair in tokens, creating new_tokens list
-            new_tokens = []
-            i = 0
-            while i < len(tokens):
-                t1 = tokens[i]
-                t2 = tokens[i+1] if i+1 < len(tokens) else None
-                # if t1 and t2 form desired pair, append pair to new_tokens
-                if (t1, t2) == pair:
-                    new_tokens.append(''.join(pair))
-                    i += 2
-                # otherwise append t1 to new_tokens
-                else:
-                    new_tokens.append(t1)
-                    i += 1
+    # Log
+    logger.info(f'Finished increasing vocab.\n')
 
-            # replace tokens with new_tokens
-            self.freq_tokens[word] = (freq, new_tokens)
-            
-    def save_vocab(self) -> None:
-        """Save vocab to file."""
-        with open(self.vocab_path, 'w') as f:
-            json.dump(list(self.vocab), f)
+    # Save vocab
+    save_vocab(vocab, vocab_path)
 

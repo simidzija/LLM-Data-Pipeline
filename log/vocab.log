@@ -2733,3 +2733,498 @@
 2025-01-16 18:10:05,583 - INFO - Vocab increased to size    999 (target 1000): Added ang = an + g.
 2025-01-16 18:10:05,583 - INFO - Finished increasing vocab.
 
+2025-01-21 17:38:35,803 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:38:35,988 - INFO - Vocab increased to size    151 (target 200): 
+                    Added th = t + h.
+2025-01-21 17:38:36,165 - INFO - Vocab increased to size    152 (target 200): 
+                    Added in = i + n.
+2025-01-21 17:38:36,330 - INFO - Vocab increased to size    153 (target 200): 
+                    Added the = th + e.
+2025-01-21 17:38:36,513 - INFO - Vocab increased to size    154 (target 200): 
+                    Added on = o + n.
+2025-01-21 17:38:36,686 - INFO - Vocab increased to size    155 (target 200): 
+                    Added ti = t + i.
+2025-01-21 17:38:36,871 - INFO - Vocab increased to size    156 (target 200): 
+                    Added an = a + n.
+2025-01-21 17:38:37,043 - INFO - Vocab increased to size    157 (target 200): 
+                    Added er = e + r.
+2025-01-21 17:38:37,225 - INFO - Vocab increased to size    158 (target 200): 
+                    Added en = e + n.
+2025-01-21 17:38:37,424 - INFO - Vocab increased to size    159 (target 200): 
+                    Added is = i + s.
+2025-01-21 17:38:37,621 - INFO - Vocab increased to size    160 (target 200): 
+                    Added es = e + s.
+2025-01-21 17:38:37,800 - INFO - Vocab increased to size    161 (target 200): 
+                    Added al = a + l.
+2025-01-21 17:38:37,984 - INFO - Vocab increased to size    162 (target 200): 
+                    Added ed = e + d.
+2025-01-21 17:38:38,199 - INFO - Vocab increased to size    163 (target 200): 
+                    Added of = o + f.
+2025-01-21 17:38:38,397 - INFO - Vocab increased to size    164 (target 200): 
+                    Added or = o + r.
+2025-01-21 17:38:38,577 - INFO - Vocab increased to size    165 (target 200): 
+                    Added ar = a + r.
+2025-01-21 17:38:38,766 - INFO - Vocab increased to size    166 (target 200): 
+                    Added at = a + t.
+2025-01-21 17:38:38,950 - INFO - Vocab increased to size    167 (target 200): 
+                    Added ic = i + c.
+2025-01-21 17:38:39,122 - INFO - Vocab increased to size    168 (target 200): 
+                    Added re = r + e.
+2025-01-21 17:38:39,305 - INFO - Vocab increased to size    169 (target 200): 
+                    Added and = an + d.
+2025-01-21 17:38:39,517 - INFO - Vocab increased to size    170 (target 200): 
+                    Added tion = ti + on.
+2025-01-21 17:38:39,690 - INFO - Vocab increased to size    171 (target 200): 
+                    Added as = a + s.
+2025-01-21 17:38:39,874 - INFO - Vocab increased to size    172 (target 200): 
+                    Added to = t + o.
+2025-01-21 17:38:40,047 - INFO - Vocab increased to size    173 (target 200): 
+                    Added it = i + t.
+2025-01-21 17:38:40,231 - INFO - Vocab increased to size    174 (target 200): 
+                    Added ing = in + g.
+2025-01-21 17:38:40,422 - INFO - Vocab increased to size    175 (target 200): 
+                    Added ro = r + o.
+2025-01-21 17:38:40,611 - INFO - Vocab increased to size    176 (target 200): 
+                    Added ce = c + e.
+2025-01-21 17:38:40,793 - INFO - Vocab increased to size    177 (target 200): 
+                    Added ci = c + i.
+2025-01-21 17:38:40,966 - INFO - Vocab increased to size    178 (target 200): 
+                    Added st = s + t.
+2025-01-21 17:38:41,144 - INFO - Vocab increased to size    179 (target 200): 
+                    Added le = l + e.
+2025-01-21 17:38:41,328 - INFO - Vocab increased to size    180 (target 200): 
+                    Added ch = c + h.
+2025-01-21 17:38:41,504 - INFO - Vocab increased to size    181 (target 200): 
+                    Added ou = o + u.
+2025-01-21 17:38:41,681 - INFO - Vocab increased to size    182 (target 200): 
+                    Added ent = en + t.
+2025-01-21 17:38:41,865 - INFO - Vocab increased to size    183 (target 200): 
+                    Added el = e + l.
+2025-01-21 17:38:42,056 - INFO - Vocab increased to size    184 (target 200): 
+                    Added ol = o + l.
+2025-01-21 17:38:42,232 - INFO - Vocab increased to size    185 (target 200): 
+                    Added ation = a + tion.
+2025-01-21 17:38:42,414 - INFO - Vocab increased to size    186 (target 200): 
+                    Added he = h + e.
+2025-01-21 17:38:42,596 - INFO - Vocab increased to size    187 (target 200): 
+                    Added ph = p + h.
+2025-01-21 17:38:42,804 - INFO - Vocab increased to size    188 (target 200): 
+                    Added me = m + e.
+2025-01-21 17:38:42,987 - INFO - Vocab increased to size    189 (target 200): 
+                    Added be = b + e.
+2025-01-21 17:38:43,173 - INFO - Vocab increased to size    190 (target 200): 
+                    Added os = o + s.
+2025-01-21 17:38:43,354 - INFO - Vocab increased to size    191 (target 200): 
+                    Added con = c + on.
+2025-01-21 17:38:43,561 - INFO - Vocab increased to size    192 (target 200): 
+                    Added il = i + l.
+2025-01-21 17:38:43,781 - INFO - Vocab increased to size    193 (target 200): 
+                    Added de = d + e.
+2025-01-21 17:38:43,968 - INFO - Vocab increased to size    194 (target 200): 
+                    Added that = th + at.
+2025-01-21 17:38:44,151 - INFO - Vocab increased to size    195 (target 200): 
+                    Added ct = c + t.
+2025-01-21 17:38:44,331 - INFO - Vocab increased to size    196 (target 200): 
+                    Added ve = v + e.
+2025-01-21 17:38:44,511 - INFO - Vocab increased to size    197 (target 200): 
+                    Added for = f + or.
+2025-01-21 17:38:44,696 - INFO - Vocab increased to size    198 (target 200): 
+                    Added tic = ti + c.
+2025-01-21 17:38:44,873 - INFO - Vocab increased to size    199 (target 200): 
+                    Added ence = en + ce.
+2025-01-21 17:38:44,873 - INFO - Finished increasing vocab.
+
+2025-01-21 17:39:43,679 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:39:43,869 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:39:44,047 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:39:44,227 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:39:44,409 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:39:44,613 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:39:44,795 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:39:44,972 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:39:45,153 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:39:45,325 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:39:45,503 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:39:45,697 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:39:45,888 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:39:46,072 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:39:46,248 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:39:46,423 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:39:46,619 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:39:46,800 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:39:46,987 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:39:47,177 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:39:47,362 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:39:47,555 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:39:47,786 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:39:47,977 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:39:48,156 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:39:48,338 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:39:48,538 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:39:48,722 - INFO - Vocab increased to size    177 (target 200): Added ci = c + i.
+2025-01-21 17:39:48,929 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:39:49,133 - INFO - Vocab increased to size    179 (target 200): Added le = l + e.
+2025-01-21 17:39:49,310 - INFO - Vocab increased to size    180 (target 200): Added ch = c + h.
+2025-01-21 17:39:49,490 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:39:49,676 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:39:49,856 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:39:50,042 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:39:50,221 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:39:50,415 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:39:50,612 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:39:50,802 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:39:50,985 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:39:51,164 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:39:51,341 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:39:51,512 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:39:51,719 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:39:51,910 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:39:52,105 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:39:52,319 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:39:52,519 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:39:52,732 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:39:52,935 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:39:52,935 - INFO - Finished increasing vocab.
+
+2025-01-21 17:43:39,969 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:47:21,238 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:56:02,241 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:56:02,431 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:56:02,614 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:56:02,811 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:56:02,999 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:56:03,220 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:56:03,399 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:56:03,577 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:56:03,767 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:56:03,968 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:56:04,160 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:56:04,337 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:56:04,515 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:56:04,715 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:56:04,890 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:56:05,068 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:56:05,257 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:56:05,447 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:56:05,647 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:56:05,836 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:56:06,010 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:56:06,198 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:56:06,380 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:56:06,564 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:56:06,745 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:56:06,942 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:56:07,129 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:56:07,306 - INFO - Vocab increased to size    177 (target 200): Added ci = c + i.
+2025-01-21 17:56:07,493 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:56:07,681 - INFO - Vocab increased to size    179 (target 200): Added le = l + e.
+2025-01-21 17:56:07,861 - INFO - Vocab increased to size    180 (target 200): Added ch = c + h.
+2025-01-21 17:56:08,050 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:56:08,227 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:56:08,400 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:56:08,579 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:56:08,760 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:56:08,953 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:56:09,130 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:56:09,315 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:56:09,527 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:56:09,701 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:56:09,882 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:56:10,058 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:56:10,238 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:56:10,427 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:56:10,617 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:56:10,805 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:56:10,993 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:56:11,179 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:56:11,358 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:56:11,358 - INFO - Finished increasing vocab.
+
+2025-01-21 17:56:32,901 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:56:33,086 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:56:33,259 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:56:33,428 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:56:33,619 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:56:33,821 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:56:34,000 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:56:34,190 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:56:34,370 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:56:34,556 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:56:34,751 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:56:34,938 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:56:35,117 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:56:35,311 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:56:35,495 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:56:35,679 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:56:35,865 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:56:36,065 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:56:36,248 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:56:36,420 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:56:36,604 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:56:36,787 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:56:36,966 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:56:37,145 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:56:37,330 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:56:37,508 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:56:37,685 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:56:37,863 - INFO - Vocab increased to size    177 (target 200): Added ci = c + i.
+2025-01-21 17:56:38,038 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:56:38,225 - INFO - Vocab increased to size    179 (target 200): Added le = l + e.
+2025-01-21 17:56:38,444 - INFO - Vocab increased to size    180 (target 200): Added ch = c + h.
+2025-01-21 17:56:38,633 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:56:38,823 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:56:39,010 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:56:39,209 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:56:39,391 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:56:39,587 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:56:39,775 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:56:39,952 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:56:40,167 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:56:40,347 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:56:40,547 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:56:40,735 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:56:40,916 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:56:41,098 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:56:41,273 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:56:41,479 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:56:41,670 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:56:41,856 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:56:42,032 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:56:42,033 - INFO - Finished increasing vocab.
+
+2025-01-21 17:57:14,468 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:57:14,587 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:57:14,701 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:57:14,832 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:57:14,945 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:57:15,058 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:57:15,175 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:57:15,289 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:57:15,405 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:57:15,527 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:57:15,645 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:57:15,759 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:57:15,873 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:57:15,992 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:57:16,110 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:57:16,226 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:57:16,345 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:57:16,459 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:57:16,572 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:57:16,692 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:57:16,805 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:57:16,919 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:57:17,032 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:57:17,148 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:57:17,281 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:57:17,394 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:57:17,514 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:57:17,627 - INFO - Vocab increased to size    177 (target 200): Added ch = c + h.
+2025-01-21 17:57:17,741 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:57:17,854 - INFO - Vocab increased to size    179 (target 200): Added ci = c + i.
+2025-01-21 17:57:17,971 - INFO - Vocab increased to size    180 (target 200): Added le = l + e.
+2025-01-21 17:57:18,086 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:57:18,203 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:57:18,321 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:57:18,435 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:57:18,551 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:57:18,669 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:57:18,782 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:57:18,896 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:57:19,010 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:57:19,148 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:57:19,267 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:57:19,385 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:57:19,507 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:57:19,623 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:57:19,743 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:57:19,867 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:57:19,982 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:57:20,101 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:57:20,218 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:57:20,219 - INFO - Finished increasing vocab.
+
+2025-01-21 17:57:43,352 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:57:43,464 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:57:43,565 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:57:43,688 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:57:43,790 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:57:43,894 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:57:43,995 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:57:44,100 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:57:44,206 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:57:44,315 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:57:44,419 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:57:44,523 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:57:44,625 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:57:44,731 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:57:44,836 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:57:44,944 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:57:45,053 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:57:45,156 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:57:45,257 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:57:45,359 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:57:45,462 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:57:45,562 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:57:45,683 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:57:45,792 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:57:45,893 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:57:45,994 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:57:46,096 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:57:46,203 - INFO - Vocab increased to size    177 (target 200): Added ch = c + h.
+2025-01-21 17:57:46,307 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:57:46,414 - INFO - Vocab increased to size    179 (target 200): Added ci = c + i.
+2025-01-21 17:57:46,526 - INFO - Vocab increased to size    180 (target 200): Added le = l + e.
+2025-01-21 17:57:46,628 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:57:46,730 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:57:46,835 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:57:46,936 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:57:47,037 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:57:47,139 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:57:47,245 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:57:47,367 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:57:47,470 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:57:47,577 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:57:47,687 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:57:47,796 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:57:47,911 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:57:48,022 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:57:48,133 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:57:48,267 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:57:48,372 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:57:48,478 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:57:48,583 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:57:48,583 - INFO - Finished increasing vocab.
+
+2025-01-21 17:57:56,636 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:57:56,746 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:57:56,851 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:57:56,968 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:57:57,129 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:57:57,238 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:57:57,343 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:57:57,452 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:57:57,559 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:57:57,668 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:57:57,773 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:57:57,883 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:57:57,994 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:57:58,098 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:57:58,203 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:57:58,314 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:57:58,423 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:57:58,527 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:57:58,631 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:57:58,757 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:57:58,861 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:57:58,964 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:57:59,074 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:57:59,184 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:57:59,294 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:57:59,400 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:57:59,508 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:57:59,611 - INFO - Vocab increased to size    177 (target 200): Added ch = c + h.
+2025-01-21 17:57:59,716 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:57:59,833 - INFO - Vocab increased to size    179 (target 200): Added ci = c + i.
+2025-01-21 17:57:59,943 - INFO - Vocab increased to size    180 (target 200): Added le = l + e.
+2025-01-21 17:58:00,048 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:58:00,157 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:58:00,262 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:58:00,366 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:58:00,503 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:58:00,609 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:58:00,714 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:58:00,821 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:58:00,926 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:58:01,029 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:58:01,135 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:58:01,240 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:58:01,344 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:58:01,456 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:58:01,561 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:58:01,666 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:58:01,775 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:58:01,878 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:58:01,983 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:58:01,983 - INFO - Finished increasing vocab.
+
+2025-01-21 17:59:04,437 - INFO - Increasing vocab size from 151 to 200
+2025-01-21 17:59:04,556 - INFO - Vocab increased to size    151 (target 200): Added th = t + h.
+2025-01-21 17:59:04,671 - INFO - Vocab increased to size    152 (target 200): Added in = i + n.
+2025-01-21 17:59:04,784 - INFO - Vocab increased to size    153 (target 200): Added the = th + e.
+2025-01-21 17:59:04,896 - INFO - Vocab increased to size    154 (target 200): Added on = o + n.
+2025-01-21 17:59:05,010 - INFO - Vocab increased to size    155 (target 200): Added ti = t + i.
+2025-01-21 17:59:05,151 - INFO - Vocab increased to size    156 (target 200): Added an = a + n.
+2025-01-21 17:59:05,267 - INFO - Vocab increased to size    157 (target 200): Added er = e + r.
+2025-01-21 17:59:05,384 - INFO - Vocab increased to size    158 (target 200): Added en = e + n.
+2025-01-21 17:59:05,500 - INFO - Vocab increased to size    159 (target 200): Added is = i + s.
+2025-01-21 17:59:05,613 - INFO - Vocab increased to size    160 (target 200): Added es = e + s.
+2025-01-21 17:59:05,726 - INFO - Vocab increased to size    161 (target 200): Added al = a + l.
+2025-01-21 17:59:05,840 - INFO - Vocab increased to size    162 (target 200): Added ed = e + d.
+2025-01-21 17:59:05,961 - INFO - Vocab increased to size    163 (target 200): Added of = o + f.
+2025-01-21 17:59:06,075 - INFO - Vocab increased to size    164 (target 200): Added or = o + r.
+2025-01-21 17:59:06,196 - INFO - Vocab increased to size    165 (target 200): Added ar = a + r.
+2025-01-21 17:59:06,313 - INFO - Vocab increased to size    166 (target 200): Added at = a + t.
+2025-01-21 17:59:06,426 - INFO - Vocab increased to size    167 (target 200): Added ic = i + c.
+2025-01-21 17:59:06,538 - INFO - Vocab increased to size    168 (target 200): Added re = r + e.
+2025-01-21 17:59:06,655 - INFO - Vocab increased to size    169 (target 200): Added and = an + d.
+2025-01-21 17:59:06,769 - INFO - Vocab increased to size    170 (target 200): Added tion = ti + on.
+2025-01-21 17:59:06,881 - INFO - Vocab increased to size    171 (target 200): Added as = a + s.
+2025-01-21 17:59:06,992 - INFO - Vocab increased to size    172 (target 200): Added to = t + o.
+2025-01-21 17:59:07,108 - INFO - Vocab increased to size    173 (target 200): Added it = i + t.
+2025-01-21 17:59:07,223 - INFO - Vocab increased to size    174 (target 200): Added ing = in + g.
+2025-01-21 17:59:07,338 - INFO - Vocab increased to size    175 (target 200): Added ro = r + o.
+2025-01-21 17:59:07,453 - INFO - Vocab increased to size    176 (target 200): Added ce = c + e.
+2025-01-21 17:59:07,566 - INFO - Vocab increased to size    177 (target 200): Added ch = c + h.
+2025-01-21 17:59:07,679 - INFO - Vocab increased to size    178 (target 200): Added st = s + t.
+2025-01-21 17:59:07,810 - INFO - Vocab increased to size    179 (target 200): Added ci = c + i.
+2025-01-21 17:59:07,926 - INFO - Vocab increased to size    180 (target 200): Added le = l + e.
+2025-01-21 17:59:08,039 - INFO - Vocab increased to size    181 (target 200): Added ou = o + u.
+2025-01-21 17:59:08,151 - INFO - Vocab increased to size    182 (target 200): Added ent = en + t.
+2025-01-21 17:59:08,267 - INFO - Vocab increased to size    183 (target 200): Added el = e + l.
+2025-01-21 17:59:08,384 - INFO - Vocab increased to size    184 (target 200): Added ol = o + l.
+2025-01-21 17:59:08,496 - INFO - Vocab increased to size    185 (target 200): Added ation = a + tion.
+2025-01-21 17:59:08,612 - INFO - Vocab increased to size    186 (target 200): Added he = h + e.
+2025-01-21 17:59:08,724 - INFO - Vocab increased to size    187 (target 200): Added ph = p + h.
+2025-01-21 17:59:08,853 - INFO - Vocab increased to size    188 (target 200): Added me = m + e.
+2025-01-21 17:59:08,966 - INFO - Vocab increased to size    189 (target 200): Added be = b + e.
+2025-01-21 17:59:09,082 - INFO - Vocab increased to size    190 (target 200): Added os = o + s.
+2025-01-21 17:59:09,194 - INFO - Vocab increased to size    191 (target 200): Added con = c + on.
+2025-01-21 17:59:09,307 - INFO - Vocab increased to size    192 (target 200): Added il = i + l.
+2025-01-21 17:59:09,424 - INFO - Vocab increased to size    193 (target 200): Added de = d + e.
+2025-01-21 17:59:09,535 - INFO - Vocab increased to size    194 (target 200): Added that = th + at.
+2025-01-21 17:59:09,647 - INFO - Vocab increased to size    195 (target 200): Added ct = c + t.
+2025-01-21 17:59:09,763 - INFO - Vocab increased to size    196 (target 200): Added ve = v + e.
+2025-01-21 17:59:09,875 - INFO - Vocab increased to size    197 (target 200): Added for = f + or.
+2025-01-21 17:59:09,987 - INFO - Vocab increased to size    198 (target 200): Added tic = ti + c.
+2025-01-21 17:59:10,099 - INFO - Vocab increased to size    199 (target 200): Added ence = en + ce.
+2025-01-21 17:59:10,099 - INFO - Finished increasing vocab.
+
+2025-01-21 17:59:34,061 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:00:03,270 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:00:30,609 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:00:48,437 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:01:16,763 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:01:30,836 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:02:09,362 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:02:21,843 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:02:37,479 - INFO - Vocab increased to size  13524 (target 20000): Added in = i + n.
+2025-01-21 18:02:51,620 - INFO - Vocab increased to size  13525 (target 20000): Added an = a + n.
+2025-01-21 18:03:06,641 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:03:17,703 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:03:32,028 - INFO - Vocab increased to size  13524 (target 20000): Added in = i + n.
+2025-01-21 18:03:44,879 - INFO - Vocab increased to size  13525 (target 20000): Added an = a + n.
+2025-01-21 18:03:58,050 - INFO - Vocab increased to size  13526 (target 20000): Added the = th + e.
+2025-01-21 18:13:23,594 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:13:43,842 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:14:12,788 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:14:25,399 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:14:43,277 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:14:58,002 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:15:10,063 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:15:26,999 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:15:37,512 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:15:51,742 - INFO - Increasing vocab size from 13523 to 20000
+2025-01-21 18:16:01,328 - INFO - Vocab increased to size  13523 (target 20000): Added th = t + h.
+2025-01-21 18:16:14,117 - INFO - Vocab increased to size  13524 (target 20000): Added in = i + n.
+2025-01-21 18:16:25,370 - INFO - Vocab increased to size  13525 (target 20000): Added an = a + n.
